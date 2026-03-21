@@ -1,0 +1,30 @@
+import { useCases } from '@/data/use-cases';
+import { SectionTitle } from '@/components/ui/SectionTitle';
+
+export function UseCasesSection() {
+  return (
+    <section id="evenimente" className="py-20 sm:py-24 lg:py-28">
+      <div className="section-shell space-y-10">
+        <SectionTitle
+          kicker="Tipuri de evenimente"
+          title="Un spațiu versatil pentru proiecte care au nevoie de atmosferă, nu doar de metri pătrați."
+          text="Salonul se potrivește natural atât proiectelor vizuale, cât și întâlnirilor sau evenimentelor restrânse în care designul, lumina și impresia generală contează cu adevărat."
+        />
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {useCases.map((item) => {
+            const Icon = item.icon;
+            return (
+              <article key={item.title} className="card-soft border-gradient p-6 sm:p-7">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#f4ede4] text-bronze">
+                  <Icon className="h-5 w-5" />
+                </div>
+                <h3 className="mt-5 font-didot text-[1.45rem] uppercase tracking-[0.08em] text-espresso">{item.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-inksoft">{item.description}</p>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-cream text-espresso font-sans antialiased;
+  background-image: radial-gradient(circle at top, rgba(255,255,255,0.9), rgba(249,247,244,0.94) 36%, #f9f7f4 100%);
+}
+
+img {
+  -webkit-user-drag: none;
+}
+
+.section-shell {
+  @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
+}
+
+.section-kicker {
+  @apply text-[11px] uppercase tracking-[0.32em] text-bronze;
+}
+
+.section-title {
+  @apply font-didot text-[2rem] leading-[1.02] tracking-[0.08em] text-espresso sm:text-[2.6rem] md:text-[3.25rem];
+}
+
+.body-copy {
+  @apply text-[15px] leading-7 text-inksoft sm:text-base;
+}
+
+.card-soft {
+  @apply rounded-[28px] border border-line/80 bg-white/70 shadow-soft backdrop-blur;
+}
+
+.border-gradient {
+  position: relative;
+}
+
+.border-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(180deg, rgba(185,151,105,0.42), rgba(231,221,209,0.8));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.video-safe {
+  min-height: 100svh;
+}
+
+.logo-filter {
+  filter: drop-shadow(0 10px 30px rgba(79, 60, 37, 0.18));
+}
+
+.menu-link {
+  @apply text-2xl font-didot uppercase tracking-[0.14em] text-espresso transition hover:text-bronze;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

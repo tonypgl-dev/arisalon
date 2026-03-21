@@ -1,0 +1,93 @@
+'use client';
+
+import { useEffect, useMemo, useState } from 'react';
+import { AvailabilityCalendar } from '@/components/booking/AvailabilityCalendar';
+import { TimeSlotPicker } from '@/components/booking/TimeSlotPicker';
+import { ReservationForm } from '@/components/booking/ReservationForm';
+import { SectionTitle } from '@/components/ui/SectionTitle';
+import { AvailabilityResponse } from '@/types/booking';
+import { getUpcomingDates } from '@/lib/utils/dates';
+import { siteContent } from '@/data/site-content';
+
+export function BookingSection() {
+  const [selectedDate, setSelectedDate] = useState(getUpcomingDates(1)[0]);
+  const [availability, setAvailability] = useState<AvailabilityResponse | null>(null);
+  const [selectedStart, setSelectedStart] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    let active = true;
+
+    async function loadAvailability() {
+      setLoading(true);
+      setError('');
+      setSelectedStart('');
+
+      try {
+        const response = await fetch(`/api/availability?date=${selectedDate}`);
+        const data = (await response.json()) as AvailabilityResponse & { error?: string };
+
+        if (!response.ok) {
+          throw new Error(data.error || 'Nu am putut încărca disponibilitatea.');
+        }
+
+        if (active) {
+          setAvailability(data);
+        }
+      } catch (err) {
+        if (active) {
+          setError(err instanceof Error ? err.message : 'A apărut o eroare.');
+        }
+      } finally {
+        if (active) {
+          setLoading(false);
+        }
+      }
+    }
+
+    void loadAvailability();
+
+    return () => {
+      active = false;
+    };
+  }, [selectedDate]);
+
+  const minHours = availability?.settings.minBookingHours || 2;
+  const slotCount = availability?.availableSlots.length || 0;
+  const statusText = useMemo(() => {
+    if (loading) return 'Încărcăm intervalele disponibile...';
+    if (error) return error;
+    if (!slotCount) return 'Momentan nu există sloturi libere pentru această zi.';
+    return `${slotCount} intervale disponibile pentru rezervare.`;
+  }, [loading, error, slotCount]);
+
+  return (
+    <section id="rezervare" className="py-20 sm:py-24 lg:py-28">
+      <div className="section-shell space-y-10">
+        <SectionTitle kicker="Rezervare" title={siteContent.bookingTitle} text={siteContent.bookingText} />
+        <div className="grid gap-6 xl:grid-cols-[1.02fr,0.98fr]">
+          <div className="card-soft border-gradient space-y-6 p-6 sm:p-8">
+            <AvailabilityCalendar selectedDate={selectedDate} onSelect={setSelectedDate} />
+            <div className="rounded-[24px] border border-line bg-[#f8f2ea] px-4 py-4 text-sm text-inksoft">{statusText}</div>
+            <TimeSlotPicker
+              slots={availability?.availableSlots || []}
+              selected={selectedStart}
+              onSelect={setSelectedStart}
+              durationHours={minHours}
+            />
+          </div>
+          <div className="card-soft border-gradient p-6 sm:p-8">
+            <h3 className="font-didot text-[1.7rem] uppercase tracking-[0.08em] text-espresso sm:text-[2rem]">Trimite detaliile tale</h3>
+            <p className="mt-3 text-sm leading-7 text-inksoft">
+              Completează datele de contact, selectează intervalul preferat și spune-ne pe scurt ce tip de eveniment pregătești.
+            </p>
+            <div className="mt-6">
+              <ReservationForm date={selectedDate} startTime={selectedStart} minBookingHours={minHours} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
