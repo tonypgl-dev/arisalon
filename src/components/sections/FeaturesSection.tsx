@@ -1,4 +1,4 @@
-import Image from 'next/image';
+﻿import Image from 'next/image';
 import { siteContent } from '@/data/site-content';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 
@@ -14,7 +14,7 @@ export function FeaturesSection() {
             {siteContent.highlights.map((item) => (
               <div key={item.title} className="card-soft border-gradient p-6">
                 <h3 className="font-didot text-[1.35rem] tracking-[0.04em] text-gold">{item.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-inksoft">{item.text}</p>
+                <p className="mt-3 text-[1.05rem] leading-8 text-inksoft sm:text-[1.12rem]">{item.text}</p>
               </div>
             ))}
           </div>

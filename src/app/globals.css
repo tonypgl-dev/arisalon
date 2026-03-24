@@ -68,6 +68,25 @@ img {
   @apply text-2xl font-didot uppercase tracking-[0.14em] text-espresso transition hover:text-bronze;
 }
 
+.contact-cta-flash {
+  animation: contactCtaFlash 0.65s ease-out 2;
+}
+
+@keyframes contactCtaFlash {
+  0% {
+    box-shadow: 0 0 0 rgba(201, 168, 76, 0);
+    transform: scale(1);
+  }
+  45% {
+    box-shadow: 0 0 0 10px rgba(201, 168, 76, 0.25);
+    transform: scale(1.04);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(201, 168, 76, 0);
+    transform: scale(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import { faqItems } from '@/data/faq';
@@ -25,10 +25,16 @@ export function FaqSection() {
                   onClick={() => setOpenIndex(open ? null : index)}
                   className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left sm:px-6"
                 >
-                  <span className="font-didot text-[1.15rem] tracking-[0.03em] text-espresso">{item.question}</span>
-                  <span className="text-xl text-gold">{open ? '−' : '+'}</span>
+                  <span className="font-didot text-[1.25rem] leading-snug tracking-[0.03em] text-espresso sm:text-[1.35rem]">
+                    {item.question}
+                  </span>
+                  <span className="text-2xl text-gold">{open ? '−' : '+'}</span>
                 </button>
-                {open ? <p className="px-5 pb-5 text-sm leading-7 text-inksoft sm:px-6 sm:pb-6">{item.answer}</p> : null}
+                {open ? (
+                  <p className="px-5 pb-5 text-[1.08rem] leading-8 text-inksoft sm:px-6 sm:pb-6 sm:text-[1.18rem]">
+                    {item.answer}
+                  </p>
+                ) : null}
               </article>
             );
           })}

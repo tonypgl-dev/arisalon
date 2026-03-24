@@ -12,24 +12,24 @@ export function HeroContent() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75 }}
-          className="text-white"
+          className="text-center text-white sm:text-left"
         >
           <h1 className="font-cormorant text-[1.8rem] italic leading-[1.05] drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)] sm:text-[2.4rem] lg:text-[2.7rem] xl:text-[3.3rem]">
             {siteContent.heroTitle}
           </h1>
           <p className="mt-4 text-[11px] uppercase tracking-[0.32em] text-white">{siteContent.heroEyebrow}</p>
-          <div className="mt-8 flex flex-nowrap items-center gap-1.5 sm:gap-3">
+          <div className="mt-8 flex flex-col items-center gap-2 sm:flex-row sm:justify-start sm:gap-3">
             <Button
               href="#galerie"
               variant="ghost"
-              className="rounded-[7px] border border-white/90 bg-black/20 px-1 py-[2px] text-[10px] font-medium text-white sm:rounded-[10px] sm:bg-transparent sm:px-4 sm:py-1.5 sm:text-[15px] hover:bg-white hover:text-espresso"
+              className="inline-flex items-center justify-center text-center rounded-[7px] border border-white/90 bg-black/20 px-1 py-[2px] text-[10px] font-medium text-white sm:rounded-[10px] sm:bg-transparent sm:px-4 sm:py-1.5 sm:text-[15px] hover:bg-white hover:text-espresso"
             >
               {siteContent.heroPrimaryCta}
             </Button>
             <Button
               href="#rezervare"
               variant="ghost"
-              className="rounded-[7px] border border-white/90 bg-black/20 px-1 py-[2px] text-[10px] font-medium text-white sm:rounded-[10px] sm:bg-transparent sm:px-4 sm:py-1.5 sm:text-[15px] hover:bg-white hover:text-espresso"
+              className="inline-flex items-center justify-center text-center rounded-[7px] border border-white/90 bg-black/20 px-1 py-[2px] text-[10px] font-medium text-white sm:rounded-[10px] sm:bg-transparent sm:px-4 sm:py-1.5 sm:text-[15px] hover:bg-white hover:text-espresso"
             >
               {siteContent.heroSecondaryCta}
             </Button>
