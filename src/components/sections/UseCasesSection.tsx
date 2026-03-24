@@ -10,58 +10,56 @@ export function UseCasesSection() {
   const [expanded, setExpanded] = useState<string | null>(null);
 
   const handleContactScroll = useCallback(() => {
-    // Prime audio so the browser allows playback later.
     window.dispatchEvent(new Event('prime-contact-audio'));
 
     const ctaAnchor = document.getElementById('contact-primary-cta-anchor');
     if (!ctaAnchor) return;
 
-    // Step 1 — quick smooth-scroll to bring CTA roughly into view (centered).
-    ctaAnchor.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    const rect = ctaAnchor.getBoundingClientRect();
+    const startY = window.scrollY;
 
-    // Step 2 — wait for the native smooth-scroll to settle.
-    let lastY = -1;
-    let stableFrames = 0;
+    // Step 1 — fast scroll to bring CTA to center of viewport.
+    const centerY = startY + rect.top - window.innerHeight / 2;
+    const dist1 = centerY - startY;
+    const dur1 = Math.min(1200, Math.max(600, Math.abs(dist1) * 0.8));
+    const t0 = performance.now();
 
-    function waitThenSlowScroll() {
-      const y = window.scrollY;
-      if (y === lastY) {
-        stableFrames++;
+    function scrollToCenter(now: number) {
+      const t = Math.min((now - t0) / dur1, 1);
+      const eased = 1 - (1 - t) ** 3;
+      window.scrollTo({ top: startY + dist1 * eased, behavior: 'auto' });
+
+      if (t < 1) {
+        requestAnimationFrame(scrollToCenter);
       } else {
-        stableFrames = 0;
-        lastY = y;
+        // Step 2 — pause briefly, then slow-scroll CTA to top.
+        setTimeout(slowScrollToTop, 300);
       }
+    }
 
-      // Wait ~250ms of no movement before starting slow scroll.
-      if (stableFrames < 15) {
-        requestAnimationFrame(waitThenSlowScroll);
-        return;
-      }
-
-      // Step 3 — slow scroll until CTA sits near the top of the viewport.
+    function slowScrollToTop() {
       if (!ctaAnchor) return;
-      const rect = ctaAnchor.getBoundingClientRect();
+      const rect2 = ctaAnchor.getBoundingClientRect();
       const topPadding = 24;
-      const distance = rect.top - topPadding;
+      const dist2 = rect2.top - topPadding;
 
-      if (Math.abs(distance) < 5) {
+      if (Math.abs(dist2) < 5) {
         window.dispatchEvent(new Event('flash-contact-cta'));
         return;
       }
 
-      const scrollStart = window.scrollY;
-      const duration = Math.min(2200, Math.max(900, Math.abs(distance) * 2.5));
-      const t0 = performance.now();
+      const scrollStart2 = window.scrollY;
+      const dur2 = Math.min(2200, Math.max(900, Math.abs(dist2) * 2.5));
+      const t1 = performance.now();
 
       function animate(now: number) {
-        const t = Math.min((now - t0) / duration, 1);
-        const eased = 1 - (1 - t) ** 3; // easeOutCubic
-        window.scrollTo({ top: scrollStart + distance * eased, behavior: 'auto' });
+        const t = Math.min((now - t1) / dur2, 1);
+        const eased = 1 - (1 - t) ** 3;
+        window.scrollTo({ top: scrollStart2 + dist2 * eased, behavior: 'auto' });
 
         if (t < 1) {
           requestAnimationFrame(animate);
         } else {
-          // Step 4 — CTA is at the top ➜ flash + sound.
           window.dispatchEvent(new Event('flash-contact-cta'));
         }
       }
@@ -69,7 +67,7 @@ export function UseCasesSection() {
       requestAnimationFrame(animate);
     }
 
-    requestAnimationFrame(waitThenSlowScroll);
+    requestAnimationFrame(scrollToCenter);
   }, []);
 
   return (
