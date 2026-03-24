@@ -118,7 +118,7 @@ export function ReservationForm({ date, startTime, minBookingHours }: Props) {
           type="number"
           inputMode="numeric"
           min={1}
-          placeholder="Numărul de persoane"
+          placeholder="Numărul persoanelor"
           value={form.guestCount || ''}
           onChange={(event) => setForm((current) => ({ ...current, guestCount: Number(event.target.value) }))}
         />
