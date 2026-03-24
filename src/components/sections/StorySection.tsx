@@ -16,7 +16,7 @@ export function StorySection() {
         </div>
         <div className="card-soft border-gradient order-1 p-7 sm:p-9 lg:order-2 lg:p-12 space-y-6">
           <p className="section-kicker">Filosofie</p>
-          <h2 className="font-didot text-[2rem] uppercase leading-[1.02] tracking-[0.08em] text-espresso sm:text-[2.75rem]">
+          <h2 className="font-didot text-[2rem] leading-[1.05] tracking-[0.04em] text-gold sm:text-[2.75rem]">
             {siteContent.storyTitle}
           </h2>
           <p className="body-copy max-w-xl">{siteContent.storyText}</p>

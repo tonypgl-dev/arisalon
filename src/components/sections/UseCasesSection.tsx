@@ -25,7 +25,7 @@ export function UseCasesSection() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#f4ede4] text-bronze">
                   <Icon className="h-5 w-5" />
                 </div>
-                <h3 className="mt-5 font-didot text-[1.45rem] uppercase tracking-[0.08em] text-espresso">{item.title}</h3>
+                <h3 className="mt-5 font-didot text-[1.45rem] tracking-[0.04em] text-gold">{item.title}</h3>
                 <p className="mt-3 text-sm leading-7 text-inksoft">{item.description}</p>
                 <AnimatePresence>
                   {isOpen && (

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
-import { Montserrat, EB_Garamond } from 'next/font/google';
+import { Montserrat, EB_Garamond, Cormorant_Garamond } from 'next/font/google';
 import './globals.css';
 
 const montserrat = Montserrat({
@@ -14,6 +14,14 @@ const ebGaramond = EB_Garamond({
   subsets: ['latin'],
   weight: ['400', '500', '600'],
   variable: '--font-eb-garamond',
+  display: 'swap',
+});
+
+const cormorantGaramond = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600'],
+  style: ['normal', 'italic'],
+  variable: '--font-cormorant',
   display: 'swap',
 });
 
@@ -39,7 +47,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ro">
-      <body className={`${montserrat.variable} ${ebGaramond.variable}`}>{children}</body>
+      <body className={`${montserrat.variable} ${ebGaramond.variable} ${cormorantGaramond.variable}`}>{children}</body>
     </html>
   );
 }

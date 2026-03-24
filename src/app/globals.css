@@ -24,11 +24,11 @@ img {
 }
 
 .section-kicker {
-  @apply text-[11px] uppercase tracking-[0.32em] text-bronze;
+  @apply text-[11px] uppercase tracking-[0.32em] text-gold;
 }
 
 .section-title {
-  @apply font-didot text-[2rem] leading-[1.02] tracking-[0.08em] text-espresso sm:text-[2.6rem] md:text-[3.25rem];
+  @apply font-didot text-[2rem] leading-[1.05] tracking-[0.04em] text-gold sm:text-[2.6rem] md:text-[3.25rem];
 }
 
 .body-copy {
@@ -36,7 +36,7 @@ img {
 }
 
 .card-soft {
-  @apply rounded-[28px] border border-line/80 bg-white/70 shadow-soft backdrop-blur;
+  @apply rounded-[28px] border border-line/50 bg-white;
 }
 
 .border-gradient {

@@ -16,8 +16,8 @@ const baseClassName =
   'inline-flex items-center justify-center rounded-full px-6 py-3 text-[13px] font-medium uppercase tracking-[0.18em] transition duration-300 active:scale-[0.98]';
 
 const variants = {
-  primary: 'bg-bronze text-white shadow-soft hover:bg-[#5a5840]',
-  secondary: 'border border-[#d9cab7] bg-white/70 text-espresso hover:bg-white',
+  primary: 'border border-bronze bg-transparent text-bronze hover:bg-bronze hover:text-white',
+  secondary: 'border border-line text-espresso bg-transparent hover:border-bronze hover:text-bronze',
   ghost: 'text-espresso hover:text-gold',
 };
 

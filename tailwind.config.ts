@@ -17,6 +17,7 @@ export default {
       fontFamily: {
         sans: ['var(--font-montserrat)', 'system-ui', 'sans-serif'],
         didot: ['var(--font-eb-garamond)', 'Georgia', 'serif'],
+        cormorant: ['var(--font-cormorant)', 'Georgia', 'serif'],
       },
       boxShadow: {
         soft: '0 10px 40px rgba(113, 89, 58, 0.10)',

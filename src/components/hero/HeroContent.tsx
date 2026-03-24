@@ -12,20 +12,20 @@ export function HeroContent() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75 }}
-          className="max-w-3xl rounded-[32px] border border-white/30 bg-white/14 p-6 text-white shadow-float backdrop-blur-sm sm:p-8 md:max-w-4xl"
+          className="max-w-3xl text-white md:max-w-5xl"
         >
-          <p className="text-[11px] uppercase tracking-[0.28em] text-[#f3e7d6]">{siteContent.heroEyebrow}</p>
-          <h1 className="mt-4 font-didot text-[2.3rem] uppercase leading-[0.95] tracking-[0.08em] sm:text-[3.3rem] md:text-[4.9rem]">
+          <p className="text-[11px] uppercase tracking-[0.32em] text-white/65">{siteContent.heroEyebrow}</p>
+          <h1 className="mt-4 font-cormorant text-[3.4rem] italic leading-[1.05] drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)] sm:text-[5rem] md:text-[7rem]">
             {siteContent.heroTitle}
           </h1>
-          <p className="mt-5 max-w-2xl text-[15px] leading-7 text-white/88 sm:text-base">
+          <p className="mt-5 max-w-xl text-[15px] leading-7 text-white/75 sm:text-base">
             {siteContent.heroText}
           </p>
-          <div className="mt-7 flex flex-wrap gap-3">
-            <Button href="#rezervare" className="bg-white text-espresso hover:bg-[#f7f1ea]">
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button href="#rezervare" className="border border-white/80 bg-transparent text-white hover:bg-white hover:text-espresso">
               {siteContent.heroPrimaryCta}
             </Button>
-            <Button href="#galerie" variant="secondary" className="border-white/50 bg-white/10 text-white hover:bg-white/20">
+            <Button href="#galerie" variant="ghost" className="text-white/80 hover:text-white">
               {siteContent.heroSecondaryCta}
             </Button>
           </div>
