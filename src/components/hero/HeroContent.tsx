@@ -1,7 +1,7 @@
 ﻿'use client';
 
+import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/Button';
 import { siteContent } from '@/data/site-content';
 
 export function HeroContent() {
@@ -18,27 +18,21 @@ export function HeroContent() {
             {siteContent.heroTitle}
           </h1>
           <p className="mt-4 text-[11px] uppercase tracking-[0.32em] text-white">{siteContent.heroEyebrow}</p>
-          <div className="mt-8 flex flex-row flex-nowrap items-center justify-center gap-2 sm:justify-start sm:gap-3">
-            <Button
+          <div className="mt-8 flex flex-nowrap items-center justify-center gap-2 sm:justify-start sm:gap-3">
+            <Link
               href="#galerie"
-              variant="ghost"
-              className="rounded-[7px] border border-white/90 bg-black/20 px-3 py-1 text-[10px] normal-case tracking-normal font-medium leading-tight text-white sm:rounded-[10px] sm:bg-transparent sm:px-4 sm:py-1.5 sm:text-[13px] hover:bg-white hover:text-espresso"
+              className="flex flex-col items-center rounded-[7px] border border-white/90 bg-black/20 px-3 py-2 text-[10px] font-medium leading-tight text-white transition sm:rounded-[10px] sm:bg-transparent sm:px-5 sm:py-2.5 sm:text-[15px] hover:bg-white hover:text-espresso"
             >
-              <span className="flex flex-col items-center leading-tight">
-                <span>Descoperă</span>
-                <span>Salonul</span>
-              </span>
-            </Button>
-            <Button
+              <span>Descoperă</span>
+              <span>Salonul</span>
+            </Link>
+            <Link
               href="#rezervare"
-              variant="ghost"
-              className="rounded-[7px] border border-white/90 bg-black/20 px-3 py-1 text-[10px] normal-case tracking-normal font-medium leading-tight text-white sm:rounded-[10px] sm:bg-transparent sm:px-4 sm:py-1.5 sm:text-[13px] hover:bg-white hover:text-espresso"
+              className="flex flex-col items-center rounded-[7px] border border-white/90 bg-black/20 px-3 py-2 text-[10px] font-medium leading-tight text-white transition sm:rounded-[10px] sm:bg-transparent sm:px-5 sm:py-2.5 sm:text-[15px] hover:bg-white hover:text-espresso"
             >
-              <span className="flex flex-col items-center leading-tight">
-                <span>Rezervă</span>
-                <span>Vizionare</span>
-              </span>
-            </Button>
+              <span>Rezervă</span>
+              <span>Vizionare</span>
+            </Link>
           </div>
         </motion.div>
       </div>
