@@ -9,11 +9,11 @@ export function AboutSection() {
   const [open, setOpen] = useState(false);
 
   return (
-    <section id="despre" className="py-8 sm:py-10 lg:py-12">
+    <section id="despre" className="pt-4 pb-8 sm:pt-5 sm:pb-10 lg:pt-6 lg:pb-12">
       <div className="section-shell grid gap-6 lg:grid-cols-[1.05fr,0.95fr] lg:items-center">
         <div className="p-6 sm:p-8 lg:p-10 space-y-5">
           <p className="section-kicker">{siteContent.aboutKicker}</p>
-          <p className="text-[15px] leading-8 text-inksoft sm:text-base">
+          <p className="text-[15px] leading-8 text-inksoft sm:text-base text-center">
             {siteContent.aboutText}
           </p>
 

@@ -47,7 +47,18 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ro">
-      <body className={`${montserrat.variable} ${ebGaramond.variable} ${cormorantGaramond.variable}`}>{children}</body>
+      <body className={`${montserrat.variable} ${ebGaramond.variable} ${cormorantGaramond.variable}`}>
+        {children}
+        <a
+          href="https://v1.hostezi.ro"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fixed bottom-4 right-4 z-[200] flex items-center gap-2 rounded-full bg-espresso/90 px-4 py-2 text-[11px] uppercase tracking-[0.18em] text-white/80 shadow-float backdrop-blur-sm transition hover:bg-espresso hover:text-white"
+        >
+          <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+          Prototip · Hostezi.ro
+        </a>
+      </body>
     </html>
   );
 }

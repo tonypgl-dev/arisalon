@@ -16,7 +16,7 @@ export default function HomePage() {
     <main id="top" className="overflow-x-hidden">
       <section className="relative flex flex-col overflow-hidden lg:h-screen lg:flex-row">
         <Navbar />
-        <div className="relative h-[60vh] w-full lg:h-auto lg:w-[60%]">
+        <div className="relative h-[60vh] w-full lg:h-auto lg:w-1/2">
           <HeroVideo />
           <HeroContent />
         </div>

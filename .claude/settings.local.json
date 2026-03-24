@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx vercel:*)",
+      "Bash(ls -lh /d/work/salon-light/*.mp4)",
+      "Bash(ls -lh /d/work/salon-light/*.MP4)",
+      "Bash(find /d/work/salon-light -name screenshot* -o -name Screenshot*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(identify /d/work/salon-light/public/images/branding/logo-black.png)",
+      "Bash(node:*)",
+      "Bash(npx:*)",
+      "Bash(ffmpeg -version)",
+      "Bash(git mv:*)",
+      "Bash(for f:*)",
+      "Bash(do)",
+      "Bash(sed -i 's/py-20 sm:py-24 lg:py-28/py-12 sm:py-16 lg:py-20/g' \"$f\")",
+      "Bash(done)"
+    ]
+  }
+}

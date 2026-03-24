@@ -44,9 +44,16 @@ export const siteContent = {
   storyTitle: 'Eleganța ar trebui să fie accesibilă.',
   storyText:
     'Credem că un spațiu frumos nu ar trebui să fie rezervat doar pentru bugete mari. De aceea, oferim opțiuni flexibile de închiriere, inclusiv pentru studenți, creatori la început de drum și proiecte independente. Pentru că uneori, cele mai bune idei nu vin cu cel mai mare buget.',
-  testimonialText:
-    'Nu este doar un spațiu. Este o experiență care schimbă complet modul în care vezi un eveniment.',
-  testimonialAuthor: 'Gabriela Naneș',
+  testimonials: [
+    {
+      text: 'Nu este doar un spațiu. Este o experiență care schimbă complet modul în care vezi un eveniment.',
+      author: 'Gabriela Naneș',
+    },
+    {
+      text: 'De aici îmi cumpăram eu foițe. Dă banii baaaa!',
+      author: 'Frătilă Constantin',
+    },
+  ],
   bookingTitle: 'Verifică disponibilitatea și trimite cererea ta',
   bookingText:
     'Alege data, vezi intervalele deja ocupate și selectează slotul potrivit pentru evenimentul tău. Cererea este trimisă pentru confirmare, iar noi revenim rapid cu detaliile finale.',
