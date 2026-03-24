@@ -39,6 +39,7 @@ export function UseCasesSection() {
       }
 
       // Step 3 — slow scroll until CTA sits near the top of the viewport.
+      if (!ctaAnchor) return;
       const rect = ctaAnchor.getBoundingClientRect();
       const topPadding = 24;
       const distance = rect.top - topPadding;
