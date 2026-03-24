@@ -47,8 +47,10 @@ export function HeroVideo() {
         <source src="/video/hero.mp4" type="video/mp4" />
       </video>
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(42,39,37,0.78)_0%,rgba(42,39,37,0.35)_55%,transparent_85%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(255,255,251,0.85)_0%,rgba(255,255,251,0.85)_18%,rgba(255,255,251,0.2)_45%,transparent_70%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(255,255,251,0.25)_0%,rgba(255,255,251,0.12)_25%,transparent_55%)]" />
     </div>
   );
 }
+
+
 

@@ -10,7 +10,7 @@
   heroEyebrow: 'Monument istoric în inima Bucureștiului',
   heroTitle: 'Eleganța se simte. Se trăiește.',
   heroPrimaryCta: 'Descoperă Salonul',
-  heroSecondaryCta: 'Rezervă o Vizionare',
+  heroSecondaryCta: 'Rezervă Vizionare',
   aboutKicker: 'Povestea locului',
   aboutTitle: 'Nu este un salon de evenimente, nici un studio clasic. Este spațiul dintre ele.',
   aboutText: 'Pe Calea Călărași, la numărul 163, am deschis porțile unei clădiri de 50 mp cu mobilier elegant și piese rare de anticariat, perfect pentru filmări, interviuri, podcasturi, fotografii de produs sau ședințe foto. Spațiul este completat de 40 mp de curte care completează elegant fluxul evenimentului și oferă cadre suplimentare.',

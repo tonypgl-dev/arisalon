@@ -15,14 +15,9 @@ export function PrototypeBadge() {
           >
             Prototip ·
           </button>
-          <a
-            href="https://v1.hostezi.ro"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[11px] uppercase tracking-[0.18em] text-blue-400 transition hover:text-blue-300"
-          >
+          <span className="text-[11px] uppercase tracking-[0.18em] text-blue-400">
             Hostezi.ro
-          </a>
+          </span>
         </div>
       ) : (
         <button
