@@ -6,7 +6,7 @@ import { siteContent } from '@/data/site-content';
 
 export function HeroContent() {
   return (
-    <div className="flex flex-1 items-center pt-24 pb-10">
+    <div className="absolute inset-0 z-10 flex items-center pt-16">
       <div className="section-shell">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -19,10 +19,10 @@ export function HeroContent() {
           </h1>
           <p className="mt-4 text-[11px] uppercase tracking-[0.32em] text-white/60">{siteContent.heroEyebrow}</p>
           <div className="mt-8 flex flex-nowrap items-center gap-3">
-            <Button href="#rezervare" className="rounded-sm border border-white/80 bg-transparent text-white hover:bg-white hover:text-espresso">
+            <Button href="#rezervare" className="rounded-lg border border-white/80 bg-transparent text-white hover:bg-white hover:text-espresso">
               {siteContent.heroPrimaryCta}
             </Button>
-            <Button href="#galerie" variant="ghost" className="rounded-sm border border-white/30 text-white/80 hover:border-white/60 hover:text-white">
+            <Button href="#galerie" variant="ghost" className="rounded-lg border border-white/30 text-white/80 hover:border-white/60 hover:text-white">
               {siteContent.heroSecondaryCta}
             </Button>
           </div>

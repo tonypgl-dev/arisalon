@@ -8,36 +8,17 @@ import { SectionTitle } from '@/components/ui/SectionTitle';
 
 export function UseCasesSection() {
   const [expanded, setExpanded] = useState<string | null>(null);
-  const [showExtra, setShowExtra] = useState(false);
 
   return (
     <section id="evenimente" className="py-8 sm:py-10 lg:py-12">
       <div className="section-shell space-y-6">
-        <div>
+        <div className="space-y-4">
           <SectionTitle
             kicker="Tipuri de evenimente"
             title="Un spațiu. Zeci de scenarii."
             text={siteContent.useCasesText}
           />
-          <AnimatePresence>
-            {showExtra && (
-              <motion.p
-                initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                animate={{ opacity: 1, height: 'auto', marginTop: 16 }}
-                exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                transition={{ duration: 0.3 }}
-                className="overflow-hidden body-copy max-w-2xl"
-              >
-                {siteContent.useCasesTextExtra}
-              </motion.p>
-            )}
-          </AnimatePresence>
-          <button
-            onClick={() => setShowExtra((v) => !v)}
-            className="mt-4 text-[11px] uppercase tracking-[0.22em] text-bronze transition-colors hover:text-espresso"
-          >
-            {showExtra ? 'Restrânge ↑' : 'Citește mai mult ↓'}
-          </button>
+          <p className="body-copy max-w-2xl">{siteContent.useCasesTextExtra}</p>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {useCases.map((item) => {

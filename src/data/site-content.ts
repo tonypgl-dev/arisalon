@@ -14,15 +14,9 @@ export const siteContent = {
   aboutKicker: 'Povestea locului',
   aboutTitle: 'Nu este un salon de evenimente, nici un studio clasic. Este spațiul dintre ele.',
   aboutText:
-    'Pe Calea Călărași, la numărul 163, am deschis porțile unei clădiri de 50 mp cu mobilier elegant și piese rare de anticariat, perfect pentru filmări, interviuri, podcasturi, fotografii de produs sau ședințe foto. Este un spațiu care a supraviețuit timpului pentru a onora momentele tale speciale.',
+    'Pe Calea Călărași, la numărul 163, am deschis porțile unei clădiri de 50 mp cu mobilier elegant și piese rare de anticariat, perfect pentru filmări, interviuri, podcasturi, fotografii de produs sau ședințe foto. Spațiul este completat de 40 mp de curte care completează elegant fluxul evenimentului și oferă cadre suplimentare.',
   aboutStory:
     'Un loc în care poți organiza o cină în doi, o lansare de produs, o ședință foto, un eveniment restrâns — sau un moment care nu are încă un nume. Totul, fără presiunea standardelor rigide.',
-  featureItems: [
-    '50 mp interior amenajați pentru setup-uri foto, întâlniri private și experiențe cu atmosferă.',
-    '40 mp de curte care completează elegant fluxul evenimentului și oferă cadre suplimentare.',
-    'Mobilier eclectic cu influențe clasice, piese decorative și detalii cu impact vizual real.',
-    'Rezervare flexibilă pentru câteva ore, o zi întreagă sau proiecte cu cerințe speciale.',
-  ],
   useCasesText:
     'Locația este gândită pentru evenimente mici, în care atmosfera contează mai mult decât amploarea: fie că ești un artist în căutarea luminii perfecte sau un spirit boem care planifică o cină în doi, spațiul nostru vibrează prin tavane înalte, texturi nobile și o intimitate greu de găsit în inima orașului.',
   useCasesTextExtra:

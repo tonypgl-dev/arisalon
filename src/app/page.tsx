@@ -16,15 +16,14 @@ export default function HomePage() {
     <main id="top" className="overflow-x-hidden">
       <section className="relative flex flex-col overflow-hidden lg:h-screen lg:flex-row">
         <Navbar />
-        <div className="relative h-[40vh] lg:h-auto lg:w-1/2">
+        <div className="relative h-[60vh] w-full lg:h-auto lg:w-[60%]">
           <HeroVideo />
-        </div>
-        <div className="relative flex min-h-[60vh] flex-col bg-espresso lg:min-h-0 lg:w-1/2">
           <HeroContent />
         </div>
+        <div className="hidden bg-espresso lg:block lg:w-[40%]" />
       </section>
-      <GallerySection />
       <AboutSection />
+      <GallerySection />
       <UseCasesSection />
       <FeaturesSection />
       <StorySection />

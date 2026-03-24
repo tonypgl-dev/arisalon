@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { siteContent } from '@/data/site-content';
-import { SectionTitle } from '@/components/ui/SectionTitle';
 
 export function AboutSection() {
   const [open, setOpen] = useState(false);
@@ -12,27 +11,48 @@ export function AboutSection() {
   return (
     <section id="despre" className="py-8 sm:py-10 lg:py-12">
       <div className="section-shell grid gap-6 lg:grid-cols-[1.05fr,0.95fr] lg:items-center">
-        <div className="p-6 sm:p-8 lg:p-10">
-          <SectionTitle kicker={siteContent.aboutKicker} title={siteContent.aboutTitle} text={siteContent.aboutText} />
+        <div className="p-6 sm:p-8 lg:p-10 space-y-5">
+          <p className="section-kicker">{siteContent.aboutKicker}</p>
+          <p className="text-[15px] leading-8 text-inksoft sm:text-base">
+            {siteContent.aboutText}
+          </p>
+
           <AnimatePresence>
             {open && (
-              <motion.p
-                initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                animate={{ opacity: 1, height: 'auto', marginTop: 20 }}
-                exit={{ opacity: 0, height: 0, marginTop: 0 }}
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.35 }}
-                className="overflow-hidden body-copy max-w-2xl"
+                className="overflow-hidden space-y-3"
               >
-                {siteContent.aboutStory}
-              </motion.p>
+                <p className="text-[15px] leading-8 text-inksoft sm:text-base">
+                  Este un spațiu care a supraviețuit timpului pentru a onora momentele tale speciale. Un loc în care poți organiza:
+                </p>
+                <ul className="space-y-1 text-[15px] leading-8 text-inksoft sm:text-base">
+                  <li>– cină în doi</li>
+                  <li>– lansare de produs</li>
+                  <li>– ședințe foto</li>
+                  <li>– evenimente restrânse</li>
+                  <li>– sau un moment care nu are încă un nume</li>
+                </ul>
+                <p className="text-[15px] leading-8 text-inksoft sm:text-base">
+                  Totul, fără presiunea standardelor rigide.
+                </p>
+              </motion.div>
             )}
           </AnimatePresence>
+
           <button
             onClick={() => setOpen((v) => !v)}
-            className="mt-6 text-[11px] uppercase tracking-[0.22em] text-bronze transition-colors hover:text-espresso"
+            className="text-[11px] uppercase tracking-[0.22em] text-bronze transition-colors hover:text-espresso"
           >
             {open ? 'Restrânge ↑' : 'Descoperă povestea locului ↓'}
           </button>
+
+          <p className="font-didot text-[1.35rem] italic leading-snug text-gold sm:text-[1.6rem]">
+            Nu este doar un salon de evenimente, nici un studio clasic. Este spațiul dintre ele.
+          </p>
         </div>
         <div className="overflow-hidden rounded-xl shadow-float">
           <Image
@@ -43,13 +63,6 @@ export function AboutSection() {
             className="h-full w-full object-cover"
           />
         </div>
-      </div>
-      <div className="section-shell mt-6 grid grid-cols-2 gap-3 xl:grid-cols-4">
-        {siteContent.featureItems.map((item) => (
-          <div key={item} className="card-soft border-gradient p-5 text-sm leading-7 text-inksoft">
-            {item}
-          </div>
-        ))}
       </div>
     </section>
   );
