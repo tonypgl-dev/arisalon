@@ -14,7 +14,7 @@ export function HeroContent() {
           transition={{ duration: 0.75 }}
           className="text-white"
         >
-          <h1 className="font-cormorant text-[3rem] italic leading-[1.05] drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)] sm:text-[4rem] lg:text-[4.5rem] xl:text-[5.5rem]">
+          <h1 className="font-cormorant text-[2.4rem] italic leading-[1.05] drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)] sm:text-[3.2rem] lg:text-[3.6rem] xl:text-[4.4rem]">
             {siteContent.heroTitle}
           </h1>
           <p className="mt-4 text-[11px] uppercase tracking-[0.32em] text-white">{siteContent.heroEyebrow}</p>
@@ -31,6 +31,7 @@ export function HeroContent() {
     </div>
   );
 }
+
 
 
 
