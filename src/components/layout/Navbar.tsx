@@ -64,34 +64,66 @@ export function Navbar() {
 
       <AnimatePresence>
         {open && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-[#2a2725]/80 backdrop-blur-sm"
-            onClick={() => setOpen(false)}
-          >
-            <nav
-              className="section-shell flex h-full flex-col justify-center gap-4 sm:gap-6"
-              onClick={(e) => e.stopPropagation()}
+          <>
+            {/* Desktop: slide-in panel in the right 25% */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 40 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-y-0 right-0 z-40 hidden w-[25%] bg-espresso lg:flex lg:flex-col lg:justify-center"
             >
-              {siteContent.menu.map((item, index) => (
-                <motion.a
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  initial={{ opacity: 0, y: 18 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  transition={{ delay: 0.05 * index, duration: 0.3 }}
-                  className="w-fit font-didot text-[2.2rem] uppercase tracking-[0.12em] text-white/85 transition-colors duration-200 hover:text-gold sm:text-[3rem]"
-                >
-                  {item.label}
-                </motion.a>
-              ))}
-            </nav>
-          </motion.div>
+              <nav
+                className="flex flex-col gap-5 px-10"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {siteContent.menu.map((item, index) => (
+                  <motion.a
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 10 }}
+                    transition={{ delay: 0.05 * index, duration: 0.3 }}
+                    className="w-fit font-didot text-[1.6rem] uppercase tracking-[0.12em] text-white/80 transition-colors duration-200 hover:text-gold"
+                  >
+                    {item.label}
+                  </motion.a>
+                ))}
+              </nav>
+            </motion.div>
+
+            {/* Mobile: fullscreen overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 z-40 bg-[#2a2725]/80 backdrop-blur-sm lg:hidden"
+              onClick={() => setOpen(false)}
+            >
+              <nav
+                className="section-shell flex h-full flex-col justify-center gap-4 sm:gap-6"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {siteContent.menu.map((item, index) => (
+                  <motion.a
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    initial={{ opacity: 0, y: 18 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ delay: 0.05 * index, duration: 0.3 }}
+                    className="w-fit font-didot text-[2.2rem] uppercase tracking-[0.12em] text-white/85 transition-colors duration-200 hover:text-gold sm:text-[3rem]"
+                  >
+                    {item.label}
+                  </motion.a>
+                ))}
+              </nav>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>
