@@ -19,10 +19,10 @@ export default function HomePage() {
         <Navbar />
         <HeroContent />
       </section>
+      <GallerySection />
       <AboutSection />
       <UseCasesSection />
       <FeaturesSection />
-      <GallerySection />
       <StorySection />
       <FaqSection />
       <BookingSection />

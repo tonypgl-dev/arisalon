@@ -8,8 +8,28 @@ export function HeroVideo() {
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+
     video.muted = true;
-    video.play().catch(() => {});
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+
+    const attempt = () => {
+      video.play().catch(() => {});
+    };
+
+    attempt();
+
+    // Fallback: retry on first user touch (some mobile browsers block until interaction)
+    const onInteraction = () => {
+      video.play().catch(() => {});
+    };
+    document.addEventListener('touchstart', onInteraction, { once: true });
+    document.addEventListener('click', onInteraction, { once: true });
+
+    return () => {
+      document.removeEventListener('touchstart', onInteraction);
+      document.removeEventListener('click', onInteraction);
+    };
   }, []);
 
   return (
