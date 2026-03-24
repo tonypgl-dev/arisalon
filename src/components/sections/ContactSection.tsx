@@ -27,7 +27,6 @@ export function ContactSection() {
                 Calendar rezervare
               </Button>
             </div>
-            <p className="text-[11px] leading-5 text-bronze/80 tracking-[0.04em]">{siteContent.contactNote}</p>
           </div>
         </div>
       </div>

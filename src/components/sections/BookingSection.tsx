@@ -15,6 +15,12 @@ export function BookingSection() {
   const [selectedSlots, setSelectedSlots] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [showSlots, setShowSlots] = useState(false);
+
+  function handleDateSelect(date: string) {
+    setSelectedDate(date);
+    setShowSlots(true);
+  }
 
   useEffect(() => {
     let active = true;
@@ -55,17 +61,28 @@ export function BookingSection() {
 
           {/* Left: calendar + slots */}
           <div className="card-soft space-y-6 p-6 sm:p-8">
-            <AvailabilityCalendar selectedDate={selectedDate} onSelect={setSelectedDate} />
+            <AvailabilityCalendar selectedDate={selectedDate} onSelect={handleDateSelect} />
 
             <div className="flex items-center justify-between border-t border-line/40 pt-4">
               <p className="text-xs text-inksoft/70">{statusText}</p>
             </div>
 
-            {!loading && !error && (
-              <TimeSlotPicker
-                selected={selectedSlots}
-                onSelect={setSelectedSlots}
-              />
+            {!loading && !error && showSlots && (
+              <div className="space-y-3">
+                <button
+                  type="button"
+                  onClick={() => setShowSlots(false)}
+                  className="flex w-full items-center justify-center gap-1 text-[10px] uppercase tracking-[0.2em] text-bronze/60 transition hover:text-bronze"
+                  aria-label="Ascunde intervalele"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="18 15 12 9 6 15" /></svg>
+                  Ascunde intervalele
+                </button>
+                <TimeSlotPicker
+                  selected={selectedSlots}
+                  onSelect={setSelectedSlots}
+                />
+              </div>
             )}
           </div>
 

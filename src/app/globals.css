@@ -28,7 +28,7 @@ img {
 }
 
 .section-title {
-  @apply font-didot text-[2rem] leading-[1.05] tracking-[0.04em] text-gold sm:text-[2.6rem] md:text-[3.25rem];
+  @apply font-didot text-[2.5rem] leading-[1.05] tracking-[0.04em] text-gold sm:text-[3.25rem] md:text-[4rem];
 }
 
 .body-copy {
