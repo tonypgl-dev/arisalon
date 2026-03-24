@@ -1,15 +1,27 @@
 ﻿'use client';
 
 import Image from 'next/image';
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { siteContent } from '@/data/site-content';
 
 export function Footer() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, amount: 0.75 });
+
   return (
     <footer className="min-h-screen border-t border-line/80">
       <div className="section-shell flex min-h-screen flex-col items-center justify-center py-10">
-        <div
-          className="inline-block rounded-[24px] bg-transparent shadow-[0_40px_140px_rgba(42,39,37,0.65)]"
+        <motion.div
+          ref={ref}
+          className="inline-block rounded-[24px] bg-transparent"
           style={{ transformOrigin: 'center center' }}
+          animate={{
+            boxShadow: isInView
+              ? '0 32px 100px rgba(42,39,37,0.55)'
+              : '0 0px 0px rgba(42,39,37,0)',
+          }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
         >
           <Image
             src="/images/branding/logo-black.png"
@@ -18,7 +30,7 @@ export function Footer() {
             height={800}
             className="h-auto w-[750px] max-w-[92vw]"
           />
-        </div>
+        </motion.div>
 
         <div className="mt-auto w-full pt-10 text-sm leading-7 text-inksoft">
           <div className="grid gap-4 sm:grid-cols-2 sm:items-end">
@@ -34,5 +46,6 @@ export function Footer() {
     </footer>
   );
 }
+
 
 
