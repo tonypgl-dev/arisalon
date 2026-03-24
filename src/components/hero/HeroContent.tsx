@@ -18,20 +18,26 @@ export function HeroContent() {
             {siteContent.heroTitle}
           </h1>
           <p className="mt-4 text-[11px] uppercase tracking-[0.32em] text-white">{siteContent.heroEyebrow}</p>
-          <div className="mt-8 flex flex-col items-center gap-2 sm:flex-row sm:justify-start sm:gap-3">
+          <div className="mt-8 flex flex-row items-center justify-center gap-2 sm:justify-start sm:gap-3">
             <Button
               href="#galerie"
               variant="ghost"
-              className="inline-flex items-center justify-center text-center rounded-[7px] border border-white/90 bg-black/20 px-1 py-[2px] text-[10px] font-medium text-white sm:rounded-[10px] sm:bg-transparent sm:px-4 sm:py-1.5 sm:text-[15px] hover:bg-white hover:text-espresso"
+              className="inline-flex items-center justify-center text-center rounded-[7px] border border-white/90 bg-black/20 px-3 py-1 text-[10px] font-medium leading-tight text-white sm:rounded-[10px] sm:bg-transparent sm:px-4 sm:py-1.5 sm:text-[13px] hover:bg-white hover:text-espresso"
             >
-              {siteContent.heroPrimaryCta}
+              <span className="leading-tight">
+                <span className="block">Descoperă</span>
+                <span className="block">Salonul</span>
+              </span>
             </Button>
             <Button
               href="#rezervare"
               variant="ghost"
-              className="inline-flex items-center justify-center text-center rounded-[7px] border border-white/90 bg-black/20 px-1 py-[2px] text-[10px] font-medium text-white sm:rounded-[10px] sm:bg-transparent sm:px-4 sm:py-1.5 sm:text-[15px] hover:bg-white hover:text-espresso"
+              className="inline-flex items-center justify-center text-center rounded-[7px] border border-white/90 bg-black/20 px-3 py-1 text-[10px] font-medium leading-tight text-white sm:rounded-[10px] sm:bg-transparent sm:px-4 sm:py-1.5 sm:text-[13px] hover:bg-white hover:text-espresso"
             >
-              {siteContent.heroSecondaryCta}
+              <span className="leading-tight">
+                <span className="block">Rezervă</span>
+                <span className="block">Vizionare</span>
+              </span>
             </Button>
           </div>
         </motion.div>
