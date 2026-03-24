@@ -24,9 +24,9 @@ export function HeroContent() {
               variant="ghost"
               className="rounded-[7px] border border-white/90 bg-black/20 px-3 py-1 text-[10px] normal-case tracking-normal font-medium leading-tight text-white sm:rounded-[10px] sm:bg-transparent sm:px-4 sm:py-1.5 sm:text-[13px] hover:bg-white hover:text-espresso"
             >
-              <span className="leading-tight">
-                <span className="block">Descoperă</span>
-                <span className="block">Salonul</span>
+              <span className="flex flex-col items-center leading-tight">
+                <span>Descoperă</span>
+                <span>Salonul</span>
               </span>
             </Button>
             <Button
@@ -34,9 +34,9 @@ export function HeroContent() {
               variant="ghost"
               className="rounded-[7px] border border-white/90 bg-black/20 px-3 py-1 text-[10px] normal-case tracking-normal font-medium leading-tight text-white sm:rounded-[10px] sm:bg-transparent sm:px-4 sm:py-1.5 sm:text-[13px] hover:bg-white hover:text-espresso"
             >
-              <span className="leading-tight">
-                <span className="block">Rezervă</span>
-                <span className="block">Vizionare</span>
+              <span className="flex flex-col items-center leading-tight">
+                <span>Rezervă</span>
+                <span>Vizionare</span>
               </span>
             </Button>
           </div>
