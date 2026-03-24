@@ -44,7 +44,7 @@ export function AboutSection() {
           />
         </div>
       </div>
-      <div className="section-shell mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="section-shell mt-6 grid grid-cols-2 gap-3 xl:grid-cols-4">
         {siteContent.featureItems.map((item) => (
           <div key={item} className="card-soft border-gradient p-5 text-sm leading-7 text-inksoft">
             {item}

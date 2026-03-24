@@ -17,8 +17,8 @@ export function Navbar() {
 
   return (
     <>
-      <header className="absolute inset-x-0 top-0 z-50">
-        <div className="section-shell pt-3 sm:pt-4">
+      <header className="relative z-50">
+        <div className="section-shell pt-4 sm:pt-6">
           <div className="flex items-center justify-between">
             <a href="#top" className="flex items-center">
               <Image
