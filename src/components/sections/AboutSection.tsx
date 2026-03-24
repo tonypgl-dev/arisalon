@@ -11,9 +11,9 @@ export function AboutSection() {
   return (
     <section id="despre" className="pt-4 pb-8 sm:pt-5 sm:pb-10 lg:pt-6 lg:pb-12">
       <div className="section-shell grid gap-6 lg:grid-cols-[1.25fr,0.75fr] lg:items-center">
-        <div className="space-y-5 p-6 sm:p-8 lg:p-10">
+        <div className="space-y-5 p-4 sm:p-5 lg:p-6">
           <p className="section-kicker text-center">{siteContent.aboutKicker}</p>
-          <p className="body-copy mx-auto max-w-2xl text-center">
+          <p className="body-copy text-center">
             {siteContent.aboutText}
           </p>
 
