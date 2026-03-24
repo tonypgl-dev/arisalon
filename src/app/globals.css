@@ -11,7 +11,7 @@ html {
 }
 
 body {
-  @apply bg-cream text-espresso font-sans antialiased;
+  @apply bg-cream text-espresso font-cormorant antialiased;
   background-image: radial-gradient(circle at top, rgba(255,255,255,0.9), rgba(255,255,251,0.94) 36%, #fffffb 100%);
 }
 
@@ -24,7 +24,7 @@ img {
 }
 
 .section-kicker {
-  @apply text-[22px] uppercase tracking-[0.18em] text-gold;
+  @apply text-[15px] uppercase tracking-[0.18em] text-gold;
 }
 
 .section-title {
@@ -73,4 +73,3 @@ img {
     scroll-behavior: auto;
   }
 }
-
