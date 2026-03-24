@@ -21,7 +21,7 @@ export function HeroContent() {
           <p className="mt-5 max-w-xl text-[15px] leading-7 text-white/75 sm:text-base">
             {siteContent.heroText}
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-nowrap items-center gap-3">
             <Button href="#rezervare" className="border border-white/80 bg-transparent text-white hover:bg-white hover:text-espresso">
               {siteContent.heroPrimaryCta}
             </Button>

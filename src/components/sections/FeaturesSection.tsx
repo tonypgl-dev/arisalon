@@ -18,7 +18,7 @@ export function FeaturesSection() {
               </div>
             ))}
           </div>
-          <div className="overflow-hidden rounded-2xl shadow-float">
+          <div className="overflow-hidden rounded-xl shadow-float">
             <Image
               src="/images/gallery/gallery-06.jpeg"
               alt="Salon Aristocratic amenajat pentru întâlniri"
