@@ -47,7 +47,7 @@ export function TimeSlotPicker({ selected, onSelect }: Props) {
           {allSelected ? 'Deselectează tot' : 'Toată ziua'}
         </button>
       </div>
-      <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
         {FIXED_SLOTS.map(({ start, end }) => {
           const active = selected.includes(start);
           return (
@@ -56,7 +56,7 @@ export function TimeSlotPicker({ selected, onSelect }: Props) {
               type="button"
               onClick={() => toggle(start)}
               className={cn(
-                'rounded-xl border px-4 py-3 text-left transition',
+                'rounded-xl border px-4 py-4 text-left transition',
                 active
                   ? 'border-gold bg-[#f5ede2] shadow-soft'
                   : 'border-line bg-white/80 hover:bg-white'
@@ -65,7 +65,7 @@ export function TimeSlotPicker({ selected, onSelect }: Props) {
               <span className={cn('block text-[10px] uppercase tracking-[0.18em]', active ? 'text-gold' : 'text-bronze/60')}>
                 {active ? 'Selectat' : 'Disponibil'}
               </span>
-              <span className="mt-1 block text-sm font-medium text-espresso">
+              <span className="mt-1 block text-xl font-medium text-espresso">
                 {start} — {end}
               </span>
             </button>

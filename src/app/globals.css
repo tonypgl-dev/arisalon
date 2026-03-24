@@ -24,7 +24,7 @@ img {
 }
 
 .section-kicker {
-  @apply text-[15px] uppercase tracking-[0.18em] text-gold;
+  @apply text-[20px] uppercase tracking-[0.18em] text-gold;
 }
 
 .section-title {
@@ -32,7 +32,7 @@ img {
 }
 
 .body-copy {
-  @apply text-[15px] leading-7 text-inksoft sm:text-base;
+  @apply text-[20px] leading-8 text-inksoft sm:text-[1.3rem];
 }
 
 .card-soft {

@@ -97,7 +97,7 @@ export function AvailabilityCalendar({
               disabled={past}
               onClick={() => !past && onSelect(dateStr)}
               className={cn(
-                'mx-auto flex h-8 w-8 items-center justify-center rounded-lg text-sm transition',
+                'mx-auto flex h-12 w-12 items-center justify-center rounded-lg text-xl transition',
                 past && 'cursor-default text-inksoft/25',
                 !past && !selected && 'text-espresso hover:bg-[#f5ede2] hover:text-gold',
                 selected && 'bg-gold font-medium text-white',

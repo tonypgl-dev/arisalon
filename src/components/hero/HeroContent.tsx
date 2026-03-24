@@ -18,11 +18,19 @@ export function HeroContent() {
             {siteContent.heroTitle}
           </h1>
           <p className="mt-4 text-[11px] uppercase tracking-[0.32em] text-white">{siteContent.heroEyebrow}</p>
-          <div className="mt-8 flex flex-nowrap items-center gap-3">
-            <Button href="#galerie" variant="ghost" className="rounded-[14px] border border-white bg-transparent px-2.5 py-1 text-[9px] text-white hover:bg-white hover:text-espresso">
+          <div className="mt-8 flex flex-nowrap items-center gap-2 sm:gap-3">
+            <Button
+              href="#galerie"
+              variant="ghost"
+              className="rounded-[8px] border border-white/90 bg-black/20 px-1.5 py-0.5 text-[10px] font-medium text-white sm:rounded-[10px] sm:bg-transparent sm:px-2 sm:text-[9px] hover:bg-white hover:text-espresso"
+            >
               {siteContent.heroPrimaryCta}
             </Button>
-            <Button href="#rezervare" variant="ghost" className="rounded-[14px] border border-white bg-transparent px-2.5 py-1 text-[9px] text-white hover:bg-white hover:text-espresso">
+            <Button
+              href="#rezervare"
+              variant="ghost"
+              className="rounded-[8px] border border-white/90 bg-black/20 px-1.5 py-0.5 text-[10px] font-medium text-white sm:rounded-[10px] sm:bg-transparent sm:px-2 sm:text-[9px] hover:bg-white hover:text-espresso"
+            >
               {siteContent.heroSecondaryCta}
             </Button>
           </div>
@@ -31,7 +39,5 @@ export function HeroContent() {
     </div>
   );
 }
-
-
 
 

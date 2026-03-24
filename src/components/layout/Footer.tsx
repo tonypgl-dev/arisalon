@@ -36,10 +36,22 @@ export function Footer() {
 
       {/* Bottom bar */}
       <div className="w-full border-t border-line/40 py-5 font-didot text-[18px] leading-8 tracking-[0.02em] text-inksoft/70">
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-1 px-6 text-center sm:flex-row sm:justify-between sm:text-left">
-          <p>Calea Călărași 163, București · locație boutique</p>
-          <p>{siteContent.contactPhone} · {siteContent.contactEmail}</p>
-          <p>© {new Date().getFullYear()} Salon Aristocratic</p>
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="grid grid-cols-2 items-start gap-4">
+            <p className="text-left">Calea Călărași 163, București · locație boutique</p>
+            <p className="text-right">
+              <a
+                href={siteContent.whatsappUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="underline-offset-4 transition hover:text-bronze hover:underline"
+              >
+                {siteContent.contactPhone}
+              </a>{' '}
+              · {siteContent.contactEmail}
+            </p>
+          </div>
+          <p className="mt-2 text-center">© {new Date().getFullYear()} Salon Aristocrat</p>
         </div>
       </div>
     </footer>

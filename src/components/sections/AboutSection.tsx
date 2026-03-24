@@ -26,17 +26,17 @@ export function AboutSection() {
                 transition={{ duration: 0.35 }}
                 className="space-y-3 overflow-hidden"
               >
-                <p className="text-[15px] leading-8 text-inksoft sm:text-base">
+                <p className="body-copy">
                   Este un spațiu care a supraviețuit timpului pentru a onora momentele tale speciale. Un loc în care poți organiza:
                 </p>
-                <ul className="space-y-1 text-[15px] leading-8 text-inksoft sm:text-base">
+                <ul className="body-copy space-y-1">
                   <li>- cină în doi</li>
                   <li>- lansare de produs</li>
                   <li>- ședințe foto</li>
                   <li>- evenimente restrânse</li>
                   <li>- sau un moment care nu are încă un nume</li>
                 </ul>
-                <p className="text-[15px] leading-8 text-inksoft sm:text-base">
+                <p className="body-copy">
                   Totul, fără presiunea standardelor rigide.
                 </p>
               </motion.div>
@@ -50,7 +50,7 @@ export function AboutSection() {
             {open ? 'AFLĂ MAI PUȚINE' : 'AFLĂ MAI MULTE'}
           </button>
 
-          <p className="text-center font-didot text-[1.35rem] italic leading-snug text-gold sm:text-[1.6rem]">
+          <p className="section-title text-center !text-[1.25rem] sm:!text-[1.625rem] md:!text-[2rem]">
             Nu este doar un salon de evenimente, nici un studio clasic. Este spațiul dintre ele.
           </p>
         </div>
@@ -67,4 +67,3 @@ export function AboutSection() {
     </section>
   );
 }
-
