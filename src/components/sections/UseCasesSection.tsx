@@ -83,7 +83,7 @@ export function UseCasesSection() {
             const Icon = item.icon;
             const isOpen = expanded === item.title;
             return (
-              <article key={item.title} className="card-soft border-gradient flex aspect-square flex-col overflow-hidden p-4 sm:aspect-auto sm:p-7">
+              <article key={item.title} onClick={() => setExpanded(isOpen ? null : item.title)} className={`card-soft border-gradient flex cursor-pointer flex-col overflow-hidden p-4 sm:aspect-auto sm:cursor-default sm:p-7 ${isOpen ? '' : 'aspect-square'}`}>
                 <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#f4ede4] text-bronze sm:h-14 sm:w-14">
                   <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
                 </div>
