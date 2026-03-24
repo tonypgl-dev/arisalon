@@ -90,7 +90,7 @@ export function UseCasesSection() {
                 <h3 className="mt-4 font-didot text-[1.12rem] leading-tight tracking-[0.03em] text-gold sm:mt-5 sm:text-[1.45rem] sm:tracking-[0.04em]">
                   {item.title}
                 </h3>
-                <p className="mt-2 text-[0.95rem] leading-6 text-inksoft sm:mt-3 sm:text-[1.12rem] sm:leading-8">
+                <p className="mt-1 text-[0.75rem] leading-4 text-inksoft sm:mt-3 sm:text-[1.12rem] sm:leading-8">
                   {item.description}
                 </p>
                 <AnimatePresence>
@@ -100,7 +100,7 @@ export function UseCasesSection() {
                       animate={{ opacity: 1, height: 'auto', marginTop: 12 }}
                       exit={{ opacity: 0, height: 0, marginTop: 0 }}
                       transition={{ duration: 0.3 }}
-                      className="overflow-hidden text-[1.02rem] leading-8 text-espresso/70 sm:text-[1.08rem]"
+                      className="overflow-hidden text-[0.75rem] leading-4 text-espresso/70 sm:text-[1.08rem] sm:leading-8"
                     >
                       {item.details}
                     </motion.p>
