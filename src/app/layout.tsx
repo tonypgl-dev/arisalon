@@ -1,12 +1,19 @@
 import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
-import { Montserrat } from 'next/font/google';
+import { Montserrat, EB_Garamond } from 'next/font/google';
 import './globals.css';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600'],
   variable: '--font-montserrat',
+  display: 'swap',
+});
+
+const ebGaramond = EB_Garamond({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-eb-garamond',
   display: 'swap',
 });
 
@@ -32,7 +39,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ro">
-      <body className={montserrat.variable}>{children}</body>
+      <body className={`${montserrat.variable} ${ebGaramond.variable}`}>{children}</body>
     </html>
   );
 }

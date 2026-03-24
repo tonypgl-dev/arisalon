@@ -12,7 +12,7 @@ html {
 
 body {
   @apply bg-cream text-espresso font-sans antialiased;
-  background-image: radial-gradient(circle at top, rgba(255,255,255,0.9), rgba(249,247,244,0.94) 36%, #f9f7f4 100%);
+  background-image: radial-gradient(circle at top, rgba(255,255,255,0.9), rgba(255,255,251,0.94) 36%, #fffffb 100%);
 }
 
 img {
