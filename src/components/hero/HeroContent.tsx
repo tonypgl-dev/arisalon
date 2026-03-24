@@ -18,18 +18,18 @@ export function HeroContent() {
             {siteContent.heroTitle}
           </h1>
           <p className="mt-4 text-[11px] uppercase tracking-[0.32em] text-white">{siteContent.heroEyebrow}</p>
-          <div className="mt-8 flex flex-nowrap items-center gap-2 sm:gap-3">
+          <div className="mt-8 flex flex-nowrap items-center gap-1.5 sm:gap-3">
             <Button
               href="#galerie"
               variant="ghost"
-              className="rounded-[8px] border border-white/90 bg-black/20 px-1.5 py-0.5 text-[10px] font-medium text-white sm:rounded-[10px] sm:bg-transparent sm:px-2 sm:text-[9px] hover:bg-white hover:text-espresso"
+              className="rounded-[7px] border border-white/90 bg-black/20 px-1 py-[2px] text-[10px] font-medium text-white sm:rounded-[10px] sm:bg-transparent sm:px-4 sm:py-1.5 sm:text-[15px] hover:bg-white hover:text-espresso"
             >
               {siteContent.heroPrimaryCta}
             </Button>
             <Button
               href="#rezervare"
               variant="ghost"
-              className="rounded-[8px] border border-white/90 bg-black/20 px-1.5 py-0.5 text-[10px] font-medium text-white sm:rounded-[10px] sm:bg-transparent sm:px-2 sm:text-[9px] hover:bg-white hover:text-espresso"
+              className="rounded-[7px] border border-white/90 bg-black/20 px-1 py-[2px] text-[10px] font-medium text-white sm:rounded-[10px] sm:bg-transparent sm:px-4 sm:py-1.5 sm:text-[15px] hover:bg-white hover:text-espresso"
             >
               {siteContent.heroSecondaryCta}
             </Button>
@@ -39,5 +39,3 @@ export function HeroContent() {
     </div>
   );
 }
-
-
