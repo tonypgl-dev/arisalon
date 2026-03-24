@@ -48,7 +48,7 @@ export const siteContent = {
       author: 'Gabriela Naneș',
     },
     {
-      text: 'De aici îmi cumpăram eu foițe. Dă banii baaaa!',
+      text: 'Locul ales de mine pentru ședințe foto, pentru că este aparte și localizat central — convenabil pentru clienții mei.',
       author: 'Frătilă Constantin',
     },
   ],

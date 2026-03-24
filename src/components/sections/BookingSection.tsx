@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
 import { AvailabilityCalendar } from '@/components/booking/AvailabilityCalendar';
 import { TimeSlotPicker } from '@/components/booking/TimeSlotPicker';
 import { ReservationForm } from '@/components/booking/ReservationForm';
@@ -13,15 +12,13 @@ import { siteContent } from '@/data/site-content';
 export function BookingSection() {
   const [selectedDate, setSelectedDate] = useState(getUpcomingDates(1)[0]);
   const [availability, setAvailability] = useState<AvailabilityResponse | null>(null);
-  const [selectedStart, setSelectedStart] = useState('');
+  const [selectedSlots, setSelectedSlots] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [showSlots, setShowSlots] = useState(false);
 
   useEffect(() => {
     let active = true;
-    setShowSlots(false);
-    setSelectedStart('');
+    setSelectedSlots([]);
 
     async function loadAvailability() {
       setLoading(true);
@@ -43,14 +40,12 @@ export function BookingSection() {
   }, [selectedDate]);
 
   const minHours = availability?.settings.minBookingHours || 2;
-  const slots = availability?.availableSlots || [];
 
   const statusText = useMemo(() => {
     if (loading) return 'Verificăm disponibilitatea...';
     if (error) return error;
-    if (!slots.length) return 'Nu există intervale libere pentru această zi.';
-    return `${slots.length} intervale disponibile`;
-  }, [loading, error, slots.length]);
+    return selectedSlots.length ? `${selectedSlots.length} interval${selectedSlots.length > 1 ? 'e selectate' : ' selectat'}` : '5 intervale disponibile';
+  }, [loading, error, selectedSlots.length]);
 
   return (
     <section id="rezervare" className="py-8 sm:py-10 lg:py-12">
@@ -66,33 +61,12 @@ export function BookingSection() {
               <p className="text-xs text-inksoft/70">{statusText}</p>
             </div>
 
-            <button
-              type="button"
-              disabled={loading || !!error}
-              onClick={() => setShowSlots((v) => !v)}
-              className="w-full rounded-xl border border-gold bg-gold py-3 text-[12px] uppercase tracking-[0.22em] text-white transition hover:bg-[#b8952f] disabled:opacity-40"
-            >
-              {showSlots ? 'Ascunde intervalele' : 'Rezervă Locația'}
-            </button>
-
-            <AnimatePresence>
-              {showSlots && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.35 }}
-                  className="overflow-hidden"
-                >
-                  <TimeSlotPicker
-                    slots={slots}
-                    selected={selectedStart}
-                    onSelect={setSelectedStart}
-                    durationHours={minHours}
-                  />
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {!loading && !error && (
+              <TimeSlotPicker
+                selected={selectedSlots}
+                onSelect={setSelectedSlots}
+              />
+            )}
           </div>
 
           {/* Right: form */}
@@ -102,7 +76,7 @@ export function BookingSection() {
               Completează datele de contact, selectează intervalul preferat și spune-ne pe scurt ce tip de eveniment pregătești.
             </p>
             <div className="mt-6">
-              <ReservationForm date={selectedDate} startTime={selectedStart} minBookingHours={minHours} />
+              <ReservationForm date={selectedDate} selectedSlots={selectedSlots} minBookingHours={minHours} />
             </div>
           </div>
 

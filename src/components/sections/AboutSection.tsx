@@ -13,7 +13,7 @@ export function AboutSection() {
       <div className="section-shell grid gap-6 lg:grid-cols-[1.05fr,0.95fr] lg:items-center">
         <div className="p-6 sm:p-8 lg:p-10 space-y-5">
           <p className="section-kicker text-center">{siteContent.aboutKicker}</p>
-          <p className="text-[15px] leading-8 text-inksoft sm:text-base text-center">
+          <p className="text-[15px] leading-6 text-inksoft sm:text-base text-center">
             {siteContent.aboutText}
           </p>
 

@@ -9,9 +9,9 @@ export function Footer() {
           <Image
             src="/images/branding/logo-black.png"
             alt="Salon Aristocratic"
-            width={180}
-            height={48}
-            className="h-auto w-[375px]"
+            width={3000}
+            height={800}
+            className="h-auto w-[750px] origin-bottom-left transition-transform duration-500 ease-out hover:scale-[2] active:scale-[2] cursor-default"
           />
           <p className="max-w-md text-sm leading-7 text-inksoft">
             {siteContent.addressLine}

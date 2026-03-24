@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { BookingSummary } from '@/components/booking/BookingSummary';
+import { FIXED_SLOTS } from '@/components/booking/TimeSlotPicker';
 import { BookingSuccess } from '@/components/booking/BookingSuccess';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
@@ -11,7 +12,7 @@ import { ReservationPayload } from '@/types/booking';
 
 type Props = {
   date: string;
-  startTime: string;
+  selectedSlots: string[];
   minBookingHours: number;
 };
 
@@ -33,13 +34,19 @@ const initialState = {
   message: '',
 };
 
-export function ReservationForm({ date, startTime, minBookingHours }: Props) {
+export function ReservationForm({ date, selectedSlots, minBookingHours }: Props) {
   const [form, setForm] = useState(initialState);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  const endTime = useMemo(() => addHours(startTime, minBookingHours), [startTime, minBookingHours]);
+  const sorted = useMemo(() => [...selectedSlots].sort(), [selectedSlots]);
+  const startTime = sorted[0] || '';
+  const endTime = useMemo(() => {
+    if (!sorted.length) return '';
+    const last = sorted[sorted.length - 1];
+    return FIXED_SLOTS.find((s) => s.start === last)?.end || addHours(last, minBookingHours);
+  }, [sorted, minBookingHours]);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -53,7 +60,7 @@ export function ReservationForm({ date, startTime, minBookingHours }: Props) {
       eventType: form.eventType,
       guestCount: Number(form.guestCount),
       date,
-      startTime,
+      startTime: sorted.length > 1 ? `${startTime} — ${endTime}` : startTime,
       endTime,
       message: form.message,
     };
@@ -130,7 +137,7 @@ export function ReservationForm({ date, startTime, minBookingHours }: Props) {
       />
       {error ? <p className="text-sm text-red-600">{error}</p> : null}
       {success ? <BookingSuccess /> : null}
-      <Button type="submit" disabled={!date || !startTime || loading} className="w-full sm:w-auto">
+      <Button type="submit" disabled={!date || !selectedSlots.length || loading} className="w-full sm:w-auto">
         {loading ? 'Trimitem...' : 'Trimite cererea'}
       </Button>
     </form>

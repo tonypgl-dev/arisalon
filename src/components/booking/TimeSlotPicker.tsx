@@ -2,53 +2,75 @@
 
 import { cn } from '@/lib/utils/cn';
 
+export const FIXED_SLOTS = [
+  { start: '07:00', end: '10:00' },
+  { start: '10:00', end: '13:00' },
+  { start: '13:00', end: '15:00' },
+  { start: '15:00', end: '18:00' },
+  { start: '18:00', end: '22:00' },
+];
+
 type Props = {
-  slots: string[];
-  selected: string;
-  onSelect: (value: string) => void;
-  durationHours: number;
+  selected: string[];
+  onSelect: (slots: string[]) => void;
 };
 
-function addHours(time: string, hours: number) {
-  const [h, m] = time.split(':').map(Number);
-  const totalMinutes = h * 60 + m + hours * 60;
-  const nextHours = Math.floor(totalMinutes / 60);
-  const nextMinutes = totalMinutes % 60;
-  return `${String(nextHours).padStart(2, '0')}:${String(nextMinutes).padStart(2, '0')}`;
-}
+export function TimeSlotPicker({ selected, onSelect }: Props) {
+  const allSelected = selected.length === FIXED_SLOTS.length;
 
-export function TimeSlotPicker({ slots, selected, onSelect, durationHours }: Props) {
+  function toggle(start: string) {
+    if (selected.includes(start)) {
+      onSelect(selected.filter((s) => s !== start));
+    } else {
+      onSelect([...selected, start]);
+    }
+  }
+
+  function toggleAll() {
+    onSelect(allSelected ? [] : FIXED_SLOTS.map((s) => s.start));
+  }
+
   return (
     <div className="space-y-3">
-      <p className="text-xs uppercase tracking-[0.24em] text-gold">Intervale libere</p>
-      <div className="grid gap-3 sm:grid-cols-2">
-        {slots.length ? (
-          slots.map((slot) => {
-            const active = slot === selected;
-            return (
-              <button
-                key={slot}
-                type="button"
-                onClick={() => onSelect(slot)}
-                className={cn(
-                  'rounded-xl border px-4 py-4 text-left transition',
-                  active
-                    ? 'border-gold bg-[#f5ede2] shadow-soft'
-                    : 'border-line bg-white/80 hover:bg-white'
-                )}
-              >
-                <span className="block text-[11px] uppercase tracking-[0.18em] text-gold">Disponibil</span>
-                <span className="mt-2 block text-base text-espresso">
-                  {slot} — {addHours(slot, durationHours)}
-                </span>
-              </button>
-            );
-          })
-        ) : (
-          <p className="rounded-xl border border-line bg-white/80 px-4 py-4 text-sm leading-7 text-inksoft">
-            Nu există intervale disponibile pentru ziua selectată.
-          </p>
-        )}
+      <div className="flex items-center justify-between">
+        <p className="text-xs uppercase tracking-[0.24em] text-gold">Intervale disponibile</p>
+        <button
+          type="button"
+          onClick={toggleAll}
+          className={cn(
+            'rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.18em] border transition',
+            allSelected
+              ? 'border-gold bg-gold text-white'
+              : 'border-line text-bronze hover:border-bronze'
+          )}
+        >
+          {allSelected ? 'Deselectează tot' : 'Toată ziua'}
+        </button>
+      </div>
+      <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+        {FIXED_SLOTS.map(({ start, end }) => {
+          const active = selected.includes(start);
+          return (
+            <button
+              key={start}
+              type="button"
+              onClick={() => toggle(start)}
+              className={cn(
+                'rounded-xl border px-4 py-3 text-left transition',
+                active
+                  ? 'border-gold bg-[#f5ede2] shadow-soft'
+                  : 'border-line bg-white/80 hover:bg-white'
+              )}
+            >
+              <span className={cn('block text-[10px] uppercase tracking-[0.18em]', active ? 'text-gold' : 'text-bronze/60')}>
+                {active ? 'Selectat' : 'Disponibil'}
+              </span>
+              <span className="mt-1 block text-sm font-medium text-espresso">
+                {start} — {end}
+              </span>
+            </button>
+          );
+        })}
       </div>
     </div>
   );
