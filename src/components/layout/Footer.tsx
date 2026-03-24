@@ -25,7 +25,7 @@ export function Footer() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           <Image
-            src="/images/branding/Venue_Black.png"
+            src="/images/branding/logofinal.png"
             alt="Salon Aristocratic"
             width={3000}
             height={800}
@@ -35,7 +35,7 @@ export function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="w-full border-t border-line/40 py-5 text-[12px] leading-6 tracking-[0.04em] text-inksoft/60">
+      <div className="w-full border-t border-line/40 py-5 font-didot text-[18px] leading-8 tracking-[0.02em] text-inksoft/70">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-1 px-6 text-center sm:flex-row sm:justify-between sm:text-left">
           <p>Calea Călărași 163, București · locație boutique</p>
           <p>{siteContent.contactPhone} · {siteContent.contactEmail}</p>
@@ -45,5 +45,3 @@ export function Footer() {
     </footer>
   );
 }
-
-

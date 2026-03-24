@@ -19,10 +19,10 @@ export function HeroContent() {
           </h1>
           <p className="mt-4 text-[11px] uppercase tracking-[0.32em] text-white">{siteContent.heroEyebrow}</p>
           <div className="mt-8 flex flex-nowrap items-center gap-3">
-            <Button href="#galerie" variant="ghost" className="rounded-[20px] border-2 border-white bg-transparent px-3 py-1.5 text-[9px] text-white hover:bg-white hover:text-espresso">
+            <Button href="#galerie" variant="ghost" className="rounded-[14px] border border-white bg-transparent px-2.5 py-1 text-[9px] text-white hover:bg-white hover:text-espresso">
               {siteContent.heroPrimaryCta}
             </Button>
-            <Button href="#rezervare" variant="ghost" className="rounded-[20px] border-2 border-white bg-transparent px-3 py-1.5 text-[9px] text-white hover:bg-white hover:text-espresso">
+            <Button href="#rezervare" variant="ghost" className="rounded-[14px] border border-white bg-transparent px-2.5 py-1 text-[9px] text-white hover:bg-white hover:text-espresso">
               {siteContent.heroSecondaryCta}
             </Button>
           </div>
@@ -31,7 +31,6 @@ export function HeroContent() {
     </div>
   );
 }
-
 
 
 

@@ -24,7 +24,7 @@ img {
 }
 
 .section-kicker {
-  @apply text-[11px] uppercase tracking-[0.32em] text-gold;
+  @apply text-[22px] uppercase tracking-[0.18em] text-gold;
 }
 
 .section-title {
@@ -73,6 +73,4 @@ img {
     scroll-behavior: auto;
   }
 }
-
-
 
