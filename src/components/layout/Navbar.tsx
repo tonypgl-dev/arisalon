@@ -18,15 +18,15 @@ export function Navbar() {
   return (
     <>
       <header className="absolute inset-x-0 top-0 z-50">
-        <div className="section-shell pt-6 sm:pt-8">
-          <div className="flex items-center justify-between">
-            <a href="#top">
+        <div className="section-shell pt-2 sm:pt-3">
+          <div className="flex items-center justify-between rounded-lg border border-white/25 bg-white/5 px-4 py-2 backdrop-blur-sm">
+            <a href="#top" className="flex items-center">
               <Image
                 src="/images/branding/logo-black.png"
                 alt="Salon Aristocratic"
                 width={800}
                 height={800}
-                className="logo-filter h-auto w-[260px] sm:w-[400px]"
+                className="logo-filter h-10 w-auto sm:h-14"
                 priority
               />
             </a>
