@@ -8,7 +8,7 @@ export const siteContent = {
     { label: 'Contact', href: '#contact' },
   ],
   heroEyebrow: 'Monument istoric în inima Bucureștiului',
-  heroTitle: 'Eleganța se trăiește.',
+  heroTitle: 'Eleganța se simte. Se trăiește.',
   heroText:
     'Pe Calea Călărași 163, am deschis porțile unui loc care nu urmează reguli standard. Nu este un studio, nu este o sală de evenimente. Este spațiul dintre ele.',
   heroPrimaryCta: 'Descoperă Salonul',

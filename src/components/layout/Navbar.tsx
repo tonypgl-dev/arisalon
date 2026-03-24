@@ -26,7 +26,7 @@ export function Navbar() {
                 alt="Salon Aristocratic"
                 width={800}
                 height={800}
-                className="h-[72px] w-auto sm:h-24"
+                className="h-[61px] w-auto sm:h-[82px]"
                 priority
               />
             </a>
