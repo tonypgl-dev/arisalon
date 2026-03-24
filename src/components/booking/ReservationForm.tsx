@@ -29,7 +29,7 @@ const initialState = {
   fullName: '',
   phone: '',
   email: '',
-  eventType: 'Ședință foto',
+  eventType: '?edin?a foto',
   guestCount: '' as unknown as number,
   message: '',
 };
@@ -79,13 +79,13 @@ export function ReservationForm({ date, selectedSlots, minBookingHours }: Props)
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'A apărut o eroare la trimiterea cererii.');
+        throw new Error(data.error || 'A aparut o eroare la trimiterea cererii.');
       }
 
       setSuccess(true);
       setForm(initialState);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'A apărut o eroare neașteptată.');
+      setError(err instanceof Error ? err.message : 'A aparut o eroare nea?teptata.');
     } finally {
       setLoading(false);
     }
@@ -96,7 +96,7 @@ export function ReservationForm({ date, selectedSlots, minBookingHours }: Props)
       <BookingSummary date={date} startTime={startTime} endTime={endTime} />
       <div className="grid gap-4 md:grid-cols-2">
         <Input
-          placeholder="Nume și prenume"
+          placeholder="Nume ?i prenume"
           value={form.fullName}
           onChange={(event) => setForm((current) => ({ ...current, fullName: event.target.value }))}
         />
@@ -114,10 +114,10 @@ export function ReservationForm({ date, selectedSlots, minBookingHours }: Props)
       />
       <div className="grid gap-4 md:grid-cols-2">
         <Select value={form.eventType} onChange={(event) => setForm((current) => ({ ...current, eventType: event.target.value }))}>
-          <option>Ședință foto</option>
+          <option>?edin?a foto</option>
           <option>Filmare / Podcast</option>
           <option>Workshop / Curs</option>
-          <option>Vernisaj / Expoziție</option>
+          <option>Vernisaj / Expozi?ie</option>
           <option>Eveniment privat</option>
           <option>Alt tip de proiect</option>
         </Select>
@@ -125,13 +125,13 @@ export function ReservationForm({ date, selectedSlots, minBookingHours }: Props)
           type="number"
           inputMode="numeric"
           min={1}
-          placeholder="Numărul persoanelor"
+          placeholder="Numarul persoanelor"
           value={form.guestCount || ''}
           onChange={(event) => setForm((current) => ({ ...current, guestCount: Number(event.target.value) }))}
         />
       </div>
       <Textarea
-        placeholder="Spune-ne pe scurt ce fel de eveniment pregătești și ce atmosferă ai în minte."
+        placeholder="Spune-ne pe scurt ce fel de eveniment pregate?ti ?i ce atmosfera ai în minte."
         value={form.message}
         onChange={(event) => setForm((current) => ({ ...current, message: event.target.value }))}
       />
@@ -143,3 +143,4 @@ export function ReservationForm({ date, selectedSlots, minBookingHours }: Props)
     </form>
   );
 }
+
