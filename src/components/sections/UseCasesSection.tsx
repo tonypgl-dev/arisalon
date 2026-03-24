@@ -12,14 +12,11 @@ export function UseCasesSection() {
   return (
     <section id="evenimente" className="py-8 sm:py-10 lg:py-12">
       <div className="section-shell space-y-6">
-        <div className="space-y-4">
-          <SectionTitle
-            kicker="Tipuri de evenimente"
-            title="Un spațiu. Zeci de scenarii."
-            text={siteContent.useCasesText}
-          />
-          <p className="body-copy max-w-2xl">{siteContent.useCasesTextExtra}</p>
-        </div>
+        <SectionTitle
+          kicker="Tipuri de evenimente"
+          title="Un spațiu. Zeci de scenarii."
+          text={siteContent.useCasesText}
+        />
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {useCases.map((item) => {
             const Icon = item.icon;

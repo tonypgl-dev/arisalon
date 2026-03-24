@@ -12,7 +12,7 @@ export function AboutSection() {
     <section id="despre" className="pt-4 pb-8 sm:pt-5 sm:pb-10 lg:pt-6 lg:pb-12">
       <div className="section-shell grid gap-6 lg:grid-cols-[1.05fr,0.95fr] lg:items-center">
         <div className="p-6 sm:p-8 lg:p-10 space-y-5">
-          <p className="section-kicker">{siteContent.aboutKicker}</p>
+          <p className="section-kicker text-center">{siteContent.aboutKicker}</p>
           <p className="text-[15px] leading-8 text-inksoft sm:text-base text-center">
             {siteContent.aboutText}
           </p>
@@ -50,7 +50,7 @@ export function AboutSection() {
             {open ? 'Restrânge ↑' : 'Descoperă povestea locului ↓'}
           </button>
 
-          <p className="font-didot text-[1.35rem] italic leading-snug text-gold sm:text-[1.6rem]">
+          <p className="font-didot text-[1.35rem] italic leading-snug text-gold sm:text-[1.6rem] text-center">
             Nu este doar un salon de evenimente, nici un studio clasic. Este spațiul dintre ele.
           </p>
         </div>

@@ -19,8 +19,6 @@ export const siteContent = {
     'Un loc în care poți organiza o cină în doi, o lansare de produs, o ședință foto, un eveniment restrâns — sau un moment care nu are încă un nume. Totul, fără presiunea standardelor rigide.',
   useCasesText:
     'Locația este gândită pentru evenimente mici, în care atmosfera contează mai mult decât amploarea: fie că ești un artist în căutarea luminii perfecte sau un spirit boem care planifică o cină în doi, spațiul nostru vibrează prin tavane înalte, texturi nobile și o intimitate greu de găsit în inima orașului.',
-  useCasesTextExtra:
-    'Transformă-ți proiectul într-o experiență vizuală memorabilă: atmosferă premium, decor unic, gata de folosit, care ridică nivelul proiectului și îți economisește timpul.',
   featuresTitle: 'De ce Aristocrat?',
   featuresText: 'Câteva motive pentru care locația noastră face diferența.',
   highlights: [

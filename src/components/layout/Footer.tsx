@@ -11,7 +11,7 @@ export function Footer() {
             alt="Salon Aristocratic"
             width={180}
             height={48}
-            className="h-auto w-[150px]"
+            className="h-auto w-[375px]"
           />
           <p className="max-w-md text-sm leading-7 text-inksoft">
             {siteContent.addressLine}
