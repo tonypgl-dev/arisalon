@@ -128,7 +128,7 @@ export function UseCasesSection() {
             type="button"
             onClick={handleContactScroll}
             aria-label="Mergi la contact"
-            className="mx-auto mt-4 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full text-[26px] leading-none text-bronze transition hover:text-gold active:scale-95"
+            className="mx-auto mt-4 hidden h-12 w-12 cursor-pointer items-center justify-center rounded-full text-[26px] leading-none text-bronze transition hover:text-gold active:scale-95 sm:flex"
             animate={{ y: [0, 6, 0] }}
             transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
           >
