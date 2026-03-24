@@ -14,15 +14,20 @@ export function StorySection() {
             className="h-full w-full object-cover"
           />
         </div>
-        <div className="card-soft border-gradient order-1 p-7 sm:p-9 lg:order-2 lg:p-12">
-          <p className="section-kicker">Atmosferă</p>
-          <h2 className="mt-4 font-didot text-[2rem] uppercase leading-[1.02] tracking-[0.08em] text-espresso sm:text-[2.75rem]">
+        <div className="card-soft border-gradient order-1 p-7 sm:p-9 lg:order-2 lg:p-12 space-y-6">
+          <p className="section-kicker">Filosofie</p>
+          <h2 className="font-didot text-[2rem] uppercase leading-[1.02] tracking-[0.08em] text-espresso sm:text-[2.75rem]">
             {siteContent.storyTitle}
           </h2>
-          <p className="mt-5 body-copy max-w-xl">{siteContent.storyText}</p>
-          <div className="mt-8 rounded-[24px] bg-[#f5efe7] p-5 text-sm leading-7 text-inksoft">
-            Ideal pentru gazde, creatori și branduri care vor un spațiu cu prezență vizuală reală, nu doar un decor generic.
-          </div>
+          <p className="body-copy max-w-xl">{siteContent.storyText}</p>
+          <blockquote className="rounded-[24px] bg-[#f5efe7] p-5 sm:p-6">
+            <p className="font-didot text-[1.15rem] italic leading-relaxed text-espresso">
+              „{siteContent.testimonialText}"
+            </p>
+            <footer className="mt-3 text-[11px] uppercase tracking-[0.22em] text-bronze">
+              — {siteContent.testimonialAuthor}
+            </footer>
+          </blockquote>
         </div>
       </div>
     </section>
