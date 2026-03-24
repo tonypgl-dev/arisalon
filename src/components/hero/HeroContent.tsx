@@ -18,11 +18,11 @@ export function HeroContent() {
             {siteContent.heroTitle}
           </h1>
           <p className="mt-4 text-[11px] uppercase tracking-[0.32em] text-white">{siteContent.heroEyebrow}</p>
-          <div className="mt-8 flex flex-row items-center justify-center gap-2 sm:justify-start sm:gap-3">
+          <div className="mt-8 flex flex-row flex-nowrap items-center justify-center gap-2 sm:justify-start sm:gap-3">
             <Button
               href="#galerie"
               variant="ghost"
-              className="inline-flex items-center justify-center text-center rounded-[7px] border border-white/90 bg-black/20 px-3 py-1 text-[10px] font-medium leading-tight text-white sm:rounded-[10px] sm:bg-transparent sm:px-4 sm:py-1.5 sm:text-[13px] hover:bg-white hover:text-espresso"
+              className="rounded-[7px] border border-white/90 bg-black/20 px-3 py-1 text-[10px] normal-case tracking-normal font-medium leading-tight text-white sm:rounded-[10px] sm:bg-transparent sm:px-4 sm:py-1.5 sm:text-[13px] hover:bg-white hover:text-espresso"
             >
               <span className="leading-tight">
                 <span className="block">Descoperă</span>
@@ -32,7 +32,7 @@ export function HeroContent() {
             <Button
               href="#rezervare"
               variant="ghost"
-              className="inline-flex items-center justify-center text-center rounded-[7px] border border-white/90 bg-black/20 px-3 py-1 text-[10px] font-medium leading-tight text-white sm:rounded-[10px] sm:bg-transparent sm:px-4 sm:py-1.5 sm:text-[13px] hover:bg-white hover:text-espresso"
+              className="rounded-[7px] border border-white/90 bg-black/20 px-3 py-1 text-[10px] normal-case tracking-normal font-medium leading-tight text-white sm:rounded-[10px] sm:bg-transparent sm:px-4 sm:py-1.5 sm:text-[13px] hover:bg-white hover:text-espresso"
             >
               <span className="leading-tight">
                 <span className="block">Rezervă</span>
