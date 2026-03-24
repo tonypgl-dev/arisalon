@@ -5,7 +5,7 @@ export function StorySection() {
   return (
     <section className="py-20 sm:py-24 lg:py-28">
       <div className="section-shell grid gap-6 lg:grid-cols-[1fr,1fr] lg:items-center">
-        <div className="overflow-hidden rounded-[32px] shadow-float order-2 lg:order-1">
+        <div className="overflow-hidden rounded-2xl shadow-float order-2 lg:order-1">
           <Image
             src="/images/gallery/gallery-05.jpeg"
             alt="Fotolii elegante în Salon Aristocratic"
@@ -20,7 +20,7 @@ export function StorySection() {
             {siteContent.storyTitle}
           </h2>
           <p className="body-copy max-w-xl">{siteContent.storyText}</p>
-          <blockquote className="rounded-[24px] bg-[#f5efe7] p-5 sm:p-6">
+          <blockquote className="rounded-xl bg-[#f5efe7] p-5 sm:p-6">
             <p className="font-didot text-[1.15rem] italic leading-relaxed text-espresso">
               „{siteContent.testimonialText}"
             </p>

@@ -34,7 +34,7 @@ export function AboutSection() {
             {open ? 'Restrânge ↑' : 'Descoperă povestea locului ↓'}
           </button>
         </div>
-        <div className="overflow-hidden rounded-[32px] shadow-float">
+        <div className="overflow-hidden rounded-2xl shadow-float">
           <Image
             src="/images/gallery/gallery-04.png"
             alt="Salon Aristocratic interior"

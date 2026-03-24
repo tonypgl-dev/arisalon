@@ -36,7 +36,7 @@ img {
 }
 
 .card-soft {
-  @apply rounded-[28px] border border-line/50 bg-white;
+  @apply rounded-2xl border border-line/50 bg-white shadow-elegant;
 }
 
 .border-gradient {

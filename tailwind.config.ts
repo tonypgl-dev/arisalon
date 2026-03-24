@@ -20,8 +20,9 @@ export default {
         cormorant: ['var(--font-cormorant)', 'Georgia', 'serif'],
       },
       boxShadow: {
-        soft: '0 10px 40px rgba(113, 89, 58, 0.10)',
-        float: '0 24px 80px rgba(113, 89, 58, 0.18)',
+        soft: '0 2px 16px rgba(42,39,37,0.06), 0 1px 3px rgba(42,39,37,0.04)',
+        elegant: '0 4px 24px rgba(42,39,37,0.08), 0 1px 4px rgba(42,39,37,0.04)',
+        float: '0 8px 40px rgba(42,39,37,0.10), 0 2px 6px rgba(42,39,37,0.05)',
       },
       backgroundImage: {
         'hero-overlay': 'linear-gradient(180deg, rgba(249,247,244,0.08) 0%, rgba(84,63,42,0.18) 40%, rgba(36,27,18,0.55) 100%)',

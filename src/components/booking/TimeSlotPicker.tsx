@@ -20,7 +20,7 @@ function addHours(time: string, hours: number) {
 export function TimeSlotPicker({ slots, selected, onSelect, durationHours }: Props) {
   return (
     <div className="space-y-3">
-      <p className="text-xs uppercase tracking-[0.24em] text-bronze">Intervale libere</p>
+      <p className="text-xs uppercase tracking-[0.24em] text-gold">Intervale libere</p>
       <div className="grid gap-3 sm:grid-cols-2">
         {slots.length ? (
           slots.map((slot) => {
@@ -31,13 +31,13 @@ export function TimeSlotPicker({ slots, selected, onSelect, durationHours }: Pro
                 type="button"
                 onClick={() => onSelect(slot)}
                 className={cn(
-                  'rounded-2xl border px-4 py-4 text-left transition',
+                  'rounded-xl border px-4 py-4 text-left transition',
                   active
-                    ? 'border-bronze bg-[#f3e9dc] shadow-soft'
+                    ? 'border-gold bg-[#f5ede2] shadow-soft'
                     : 'border-line bg-white/80 hover:bg-white'
                 )}
               >
-                <span className="block text-[11px] uppercase tracking-[0.18em] text-bronze">Disponibil</span>
+                <span className="block text-[11px] uppercase tracking-[0.18em] text-gold">Disponibil</span>
                 <span className="mt-2 block text-base text-espresso">
                   {slot} — {addHours(slot, durationHours)}
                 </span>
@@ -45,7 +45,7 @@ export function TimeSlotPicker({ slots, selected, onSelect, durationHours }: Pro
             );
           })
         ) : (
-          <p className="rounded-2xl border border-line bg-white/80 px-4 py-4 text-sm leading-7 text-inksoft">
+          <p className="rounded-xl border border-line bg-white/80 px-4 py-4 text-sm leading-7 text-inksoft">
             Nu există intervale disponibile pentru ziua selectată.
           </p>
         )}
