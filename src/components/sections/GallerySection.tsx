@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import Image from 'next/image';
@@ -21,24 +21,39 @@ export function GallerySection() {
           text="Lumina, texturile și mobilierul vorbesc de la sine."
         />
 
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
-          {galleryImages.map((image, i) => (
-            <button
-              key={image.src}
-              type="button"
-              onClick={() => setLightbox(i)}
-              className="group relative aspect-[4/3] overflow-hidden rounded-xl shadow-elegant"
-            >
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                sizes="(max-width: 640px) 50vw, 25vw"
-                className="object-cover transition duration-500 group-hover:scale-[1.04]"
-              />
-              <div className="absolute inset-0 bg-[#2a2725]/0 transition duration-300 group-hover:bg-[#2a2725]/20" />
-            </button>
-          ))}
+        <div className="columns-2 gap-3 sm:columns-3 sm:gap-4 lg:columns-4">
+          {galleryImages.map((image, i) => {
+            const tileHeight = image.tall
+              ? 'h-[360px] sm:h-[430px]'
+              : image.wide
+                ? 'h-[190px] sm:h-[220px]'
+                : i % 3 === 0
+                  ? 'h-[240px] sm:h-[290px]'
+                  : i % 3 === 1
+                    ? 'h-[210px] sm:h-[260px]'
+                    : 'h-[280px] sm:h-[330px]';
+
+            const staggerOffset = i % 2 === 1 ? 'mt-4 sm:mt-6' : 'mt-0';
+
+            return (
+              <div key={image.src} className={`mb-3 break-inside-avoid sm:mb-4 ${staggerOffset}`}>
+                <button
+                  type="button"
+                  onClick={() => setLightbox(i)}
+                  className={`group relative w-full overflow-hidden rounded-xl shadow-elegant ${tileHeight}`}
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    className="object-cover transition duration-500 group-hover:scale-[1.04]"
+                  />
+                  <div className="absolute inset-0 bg-[#2a2725]/0 transition duration-300 group-hover:bg-[#2a2725]/20" />
+                </button>
+              </div>
+            );
+          })}
         </div>
       </div>
 

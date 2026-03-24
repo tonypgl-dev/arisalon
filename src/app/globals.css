@@ -1,4 +1,4 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -61,7 +61,7 @@ img {
 }
 
 .logo-filter {
-  filter: drop-shadow(0 10px 30px rgba(79, 60, 37, 0.18));
+  filter: drop-shadow(0 32px 90px rgba(42, 39, 37, 0.55));
 }
 
 .menu-link {
@@ -73,3 +73,6 @@ img {
     scroll-behavior: auto;
   }
 }
+
+
+
