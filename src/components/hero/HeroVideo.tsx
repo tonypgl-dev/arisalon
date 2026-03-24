@@ -1,12 +1,27 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
+
 export function HeroVideo() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = true;
+    video.play().catch(() => {});
+  }, []);
+
   return (
     <div className="absolute inset-0 overflow-hidden bg-[#d8cab8]">
       <video
+        ref={videoRef}
         className="h-full w-full object-cover"
         autoPlay
         muted
         loop
         playsInline
+        preload="auto"
         poster="/images/hero/poster.jpeg"
       >
         <source src="/video/hero.mp4" type="video/mp4" />
