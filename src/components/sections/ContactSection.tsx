@@ -21,13 +21,13 @@ export function ContactSection() {
                 {siteContent.contactEmail}
               </a>
             </div>
-            <p className="text-sm leading-7 text-inksoft">Răspundem rapid pentru rezervări, filmări, workshop-uri, vernisaje și alte proiecte speciale.</p>
             <div className="flex flex-wrap gap-3">
-              <Button href={siteContent.whatsappUrl}>WhatsApp</Button>
+              <Button href={siteContent.whatsappUrl}>{siteContent.contactCta}</Button>
               <Button href="#rezervare" variant="secondary">
                 Calendar rezervare
               </Button>
             </div>
+            <p className="text-[11px] leading-5 text-bronze/80 tracking-[0.04em]">{siteContent.contactNote}</p>
           </div>
         </div>
       </div>

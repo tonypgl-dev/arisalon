@@ -14,13 +14,9 @@ export function StorySection() {
             className="h-full w-full object-cover"
           />
         </div>
-        <div className="card-soft border-gradient order-1 p-7 sm:p-9 lg:order-2 lg:p-12 space-y-6">
-          <p className="section-kicker">Filosofie</p>
-          <h2 className="font-didot text-[2rem] leading-[1.05] tracking-[0.04em] text-gold sm:text-[2.75rem]">
-            {siteContent.storyTitle}
-          </h2>
-          <p className="body-copy max-w-xl">{siteContent.storyText}</p>
-          <blockquote className="rounded-xl bg-[#f5efe7] p-5 sm:p-6">
+        <div className="card-soft border-gradient order-1 p-7 sm:p-9 lg:order-2 lg:p-12">
+          <p className="section-kicker">Testimonial</p>
+          <blockquote className="mt-6 rounded-xl bg-[#f5efe7] p-5 sm:p-6">
             <p className="font-didot text-[1.15rem] italic leading-relaxed text-espresso">
               „{siteContent.testimonialText}"
             </p>

@@ -14,12 +14,12 @@ import { ContactSection } from '@/components/sections/ContactSection';
 export default function HomePage() {
   return (
     <main id="top" className="overflow-x-hidden">
-      <section className="flex flex-col overflow-hidden lg:h-screen lg:flex-row">
+      <section className="relative flex flex-col overflow-hidden lg:h-screen lg:flex-row">
+        <Navbar />
         <div className="relative h-[40vh] lg:h-auto lg:w-1/2">
           <HeroVideo />
         </div>
         <div className="relative flex min-h-[60vh] flex-col bg-espresso lg:min-h-0 lg:w-1/2">
-          <Navbar />
           <HeroContent />
         </div>
       </section>
