@@ -21,14 +21,14 @@ export function HeroContent() {
           <div className="mt-8 flex flex-nowrap items-center justify-center gap-2 sm:justify-start sm:gap-3">
             <Link
               href="#galerie"
-              className="flex flex-col items-center rounded-[7px] border border-white/60 bg-black/20 px-4 py-2.5 text-[13px] font-medium leading-tight text-white transition sm:rounded-[10px] sm:bg-transparent sm:px-5 sm:py-2.5 sm:text-[15px] hover:bg-white hover:text-espresso"
+              className="flex flex-col items-center rounded-[7px] border border-white/60 bg-black/20 px-4 py-2.5 text-[15px] font-medium leading-tight text-white transition sm:rounded-[10px] sm:bg-transparent sm:px-5 sm:py-2.5 sm:text-[17px] hover:bg-white hover:text-espresso"
             >
               <span>Descoperă</span>
               <span>Salonul</span>
             </Link>
             <Link
               href="#rezervare"
-              className="flex flex-col items-center rounded-[7px] border border-white/60 bg-black/20 px-4 py-2.5 text-[13px] font-medium leading-tight text-white transition sm:rounded-[10px] sm:bg-transparent sm:px-5 sm:py-2.5 sm:text-[15px] hover:bg-white hover:text-espresso"
+              className="flex flex-col items-center rounded-[7px] border border-white/60 bg-black/20 px-4 py-2.5 text-[15px] font-medium leading-tight text-white transition sm:rounded-[10px] sm:bg-transparent sm:px-5 sm:py-2.5 sm:text-[17px] hover:bg-white hover:text-espresso"
             >
               <span>Rezervă</span>
               <span>Vizionare</span>
