@@ -29,7 +29,7 @@ const initialState = {
   phone: '',
   email: '',
   eventType: 'Ședință foto',
-  guestCount: 8,
+  guestCount: '' as unknown as number,
   message: '',
 };
 
@@ -116,9 +116,10 @@ export function ReservationForm({ date, startTime, minBookingHours }: Props) {
         </Select>
         <Input
           type="number"
+          inputMode="numeric"
           min={1}
-          placeholder="Număr persoane"
-          value={form.guestCount}
+          placeholder="Numărul de persoane"
+          value={form.guestCount || ''}
           onChange={(event) => setForm((current) => ({ ...current, guestCount: Number(event.target.value) }))}
         />
       </div>
