@@ -4,7 +4,7 @@ import { SectionTitle } from '@/components/ui/SectionTitle';
 
 export function FeaturesSection() {
   return (
-    <section className="py-20 sm:py-24 lg:py-28">
+    <section className="py-8 sm:py-10 lg:py-12">
       <div className="section-shell grid gap-6 lg:grid-cols-[0.92fr,1.08fr] lg:items-start">
         <div className="p-6 sm:p-8 lg:sticky lg:top-6">
           <SectionTitle kicker="Avantaje" title={siteContent.featuresTitle} text={siteContent.featuresText} />

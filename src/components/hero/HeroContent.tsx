@@ -6,7 +6,7 @@ import { siteContent } from '@/data/site-content';
 
 export function HeroContent() {
   return (
-    <div className="relative z-10 flex min-h-screen items-end pb-8 pt-28 sm:pb-10 sm:pt-32">
+    <div className="relative z-10 flex min-h-screen items-center pb-[200px] pt-0">
       <div className="section-shell">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

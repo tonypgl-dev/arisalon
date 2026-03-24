@@ -3,7 +3,7 @@ import { siteContent } from '@/data/site-content';
 
 export function StorySection() {
   return (
-    <section className="py-20 sm:py-24 lg:py-28">
+    <section className="py-8 sm:py-10 lg:py-12">
       <div className="section-shell grid gap-6 lg:grid-cols-[1fr,1fr] lg:items-center">
         <div className="overflow-hidden rounded-xl shadow-float order-2 lg:order-1">
           <Image

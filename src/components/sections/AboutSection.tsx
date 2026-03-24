@@ -10,7 +10,7 @@ export function AboutSection() {
   const [open, setOpen] = useState(false);
 
   return (
-    <section id="despre" className="py-20 sm:py-24 lg:py-28">
+    <section id="despre" className="py-8 sm:py-10 lg:py-12">
       <div className="section-shell grid gap-6 lg:grid-cols-[1.05fr,0.95fr] lg:items-center">
         <div className="p-6 sm:p-8 lg:p-10">
           <SectionTitle kicker={siteContent.aboutKicker} title={siteContent.aboutTitle} text={siteContent.aboutText} />

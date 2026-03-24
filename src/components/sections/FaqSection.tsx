@@ -8,7 +8,7 @@ export function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-20 sm:py-24 lg:py-28">
+    <section className="py-8 sm:py-10 lg:py-12">
       <div className="section-shell grid gap-8 lg:grid-cols-[0.95fr,1.05fr] lg:items-start">
         <SectionTitle
           kicker="Întrebări frecvente"

@@ -53,8 +53,8 @@ export function BookingSection() {
   }, [loading, error, slots.length]);
 
   return (
-    <section id="rezervare" className="py-20 sm:py-24 lg:py-28">
-      <div className="section-shell space-y-10">
+    <section id="rezervare" className="py-8 sm:py-10 lg:py-12">
+      <div className="section-shell space-y-6">
         <SectionTitle kicker="Rezervare" title={siteContent.bookingTitle} text={siteContent.bookingText} />
         <div className="grid gap-6 xl:grid-cols-[1.02fr,0.98fr]">
 

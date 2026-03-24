@@ -18,15 +18,15 @@ export function Navbar() {
   return (
     <>
       <header className="absolute inset-x-0 top-0 z-50">
-        <div className="section-shell pt-2 sm:pt-3">
-          <div className="flex items-center justify-between rounded-lg border border-white/25 bg-white/5 px-4 py-2 backdrop-blur-sm">
+        <div className="section-shell pt-3 sm:pt-4">
+          <div className="flex items-center justify-between">
             <a href="#top" className="flex items-center">
               <Image
-                src="/images/branding/logo-black.png"
+                src="/images/branding/logoalb.png"
                 alt="Salon Aristocratic"
                 width={800}
                 height={800}
-                className="logo-filter h-10 w-auto sm:h-14"
+                className="h-[72px] w-auto sm:h-24"
                 priority
               />
             </a>
@@ -54,7 +54,7 @@ export function Navbar() {
                       : { rotate: 0, y: line === 0 ? -7 : line === 2 ? 7 : 0, opacity: 1 }
                   }
                   transition={{ duration: 0.28, ease: 'easeInOut' }}
-                  className="absolute h-[1.5px] w-6 rounded-full bg-white/90 transition-colors duration-200 group-hover:bg-gold"
+                  className="absolute h-[2.5px] w-6 rounded-full bg-white transition-colors duration-200 group-hover:bg-gold"
                 />
               ))}
             </motion.button>

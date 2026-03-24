@@ -13,8 +13,8 @@ export function GallerySection() {
   function next() { setLightbox((i) => (i !== null && i < galleryImages.length - 1 ? i + 1 : i)); }
 
   return (
-    <section id="galerie" className="py-20 sm:py-24 lg:py-28">
-      <div className="section-shell space-y-10">
+    <section id="galerie" className="py-8 sm:py-10 lg:py-12">
+      <div className="section-shell space-y-6">
         <SectionTitle
           kicker="Galerie"
           title="Detalii reale ale locației."

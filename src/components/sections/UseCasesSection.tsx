@@ -9,8 +9,8 @@ export function UseCasesSection() {
   const [expanded, setExpanded] = useState<string | null>(null);
 
   return (
-    <section id="evenimente" className="py-20 sm:py-24 lg:py-28">
-      <div className="section-shell space-y-10">
+    <section id="evenimente" className="py-8 sm:py-10 lg:py-12">
+      <div className="section-shell space-y-6">
         <SectionTitle
           kicker="Tipuri de evenimente"
           title="Un spațiu. Zeci de scenarii."
