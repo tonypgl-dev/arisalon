@@ -10,9 +10,9 @@ export function Footer() {
       <div className="section-shell flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div className="space-y-3">
           <motion.div
-            whileHover={{ scale: 2 }}
-            whileTap={{ scale: 2 }}
-            transition={{ duration: 0.45, ease: 'easeOut' }}
+            whileHover={{ scale: 2, transition: { duration: 0.45, ease: 'easeOut' } }}
+            whileTap={{ scale: 2, transition: { duration: 0.3, ease: 'easeOut' } }}
+            transition={{ duration: 0 }}
             style={{ transformOrigin: 'left center', display: 'inline-block' }}
           >
             <Image
