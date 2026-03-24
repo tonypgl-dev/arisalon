@@ -25,7 +25,7 @@ export function Footer() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           <Image
-            src="/images/branding/logo-black.png"
+            src="/images/branding/Venue_Black.png"
             alt="Salon Aristocratic"
             width={3000}
             height={800}
@@ -45,6 +45,5 @@ export function Footer() {
     </footer>
   );
 }
-
 
 
