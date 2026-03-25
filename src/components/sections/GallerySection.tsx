@@ -32,6 +32,7 @@ function playSwipeSound() {
 export function GallerySection() {
   const [lightbox, setLightbox] = useState<number | null>(null);
   const [showHint, setShowHint] = useState(false);
+  const hintCount = useRef(0);
   const [dir, setDir] = useState(0); // -1 = prev (down), 1 = next (up)
   const touchStartY = useRef(0);
   const touchStartX = useRef(0);
@@ -64,15 +65,17 @@ export function GallerySection() {
     }
   }
 
-  // Show hint animation when lightbox opens
+  // Show hint only on first open, max 2 times per session
   useEffect(() => {
-    if (lightbox !== null) {
+    if (lightbox !== null && hintCount.current < 2) {
+      hintCount.current++;
       setShowHint(true);
-      const t = setTimeout(() => setShowHint(false), 2800);
+      const t = setTimeout(() => setShowHint(false), 1400);
       return () => clearTimeout(t);
     }
     setShowHint(false);
-  }, [lightbox]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lightbox !== null]);
 
   // Keyboard navigation
   const handleKey = useCallback((e: KeyboardEvent) => {
@@ -222,20 +225,13 @@ export function GallerySection() {
                   className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center sm:hidden"
                 >
                   <motion.div
-                    className="flex flex-col items-center gap-1 rounded-2xl bg-black/50 px-6 py-4 backdrop-blur-sm"
-                    animate={{
-                      boxShadow: [
-                        '0 0 0 rgba(201,168,76,0)',
-                        '0 0 30px rgba(201,168,76,0.4)',
-                        '0 0 0 rgba(201,168,76,0)',
-                        '0 0 30px rgba(201,168,76,0.4)',
-                        '0 0 0 rgba(201,168,76,0)',
-                      ],
-                    }}
-                    transition={{ duration: 2.4, ease: 'easeInOut' }}
+                    className="flex flex-col items-center gap-1"
+                    style={{ filter: 'drop-shadow(0 0 8px rgba(255,255,255,0.35))' }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: [0, 1, 1, 0] }}
+                    transition={{ duration: 1.4, times: [0, 0.15, 0.7, 1], ease: 'easeInOut' }}
                     onAnimationStart={() => {
-                      setTimeout(() => playSwipeSound(), 300);
-                      setTimeout(() => playSwipeSound(), 1200);
+                      setTimeout(() => playSwipeSound(), 200);
                     }}
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-white">
