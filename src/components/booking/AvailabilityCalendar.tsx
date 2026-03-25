@@ -33,6 +33,14 @@ export function AvailabilityCalendar({
     return grid;
   }, [viewYear, viewMonth]);
 
+  const rows = useMemo(() => {
+    const r: (number | null)[][] = [];
+    for (let i = 0; i < cells.length; i += 7) {
+      r.push(cells.slice(i, i + 7));
+    }
+    return r;
+  }, [cells]);
+
   function toDateStr(day: number) {
     return `${viewYear}-${String(viewMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
   }
@@ -52,62 +60,67 @@ export function AvailabilityCalendar({
   }
 
   return (
-    <div className="mx-auto max-w-sm space-y-2">
+    <div className="mx-auto max-w-md space-y-3 rounded-2xl bg-[#f0e6da] p-4 sm:p-6">
       <div className="flex items-center justify-between pb-1">
         <button
           type="button"
           onClick={prevMonth}
           disabled={!canGoPrev}
-          className="flex h-8 w-8 items-center justify-center rounded-lg border border-line text-lg text-inksoft transition hover:border-gold hover:text-gold disabled:opacity-25"
+          className="flex h-8 w-8 items-center justify-center rounded-lg border border-espresso/15 text-lg text-inksoft transition hover:border-gold hover:text-gold disabled:opacity-25"
         >
           ‹
         </button>
-        <p className="font-didot text-lg tracking-[0.06em] text-espresso">
+        <p className="font-didot text-2xl tracking-[0.06em] text-espresso">
           {MONTHS_RO[viewMonth]} {viewYear}
         </p>
         <button
           type="button"
           onClick={nextMonth}
-          className="flex h-8 w-8 items-center justify-center rounded-lg border border-line text-lg text-inksoft transition hover:border-gold hover:text-gold"
+          className="flex h-8 w-8 items-center justify-center rounded-lg border border-espresso/15 text-lg text-inksoft transition hover:border-gold hover:text-gold"
         >
           ›
         </button>
       </div>
 
-      <div className="grid grid-cols-7">
+      <div className="grid grid-cols-7 border-b border-espresso/[0.06] pb-2">
         {DAYS.map((d) => (
-          <div key={d} className="py-1 text-center text-[10px] uppercase tracking-[0.14em] text-inksoft/50">
+          <div key={d} className="py-1 text-center text-[15px] uppercase tracking-[0.14em] text-espresso/50">
             {d}
           </div>
         ))}
       </div>
 
-      <div className="grid grid-cols-7 gap-y-1">
-        {cells.map((day, i) => {
-          if (!day) return <div key={i} />;
-          const dateStr = toDateStr(day);
-          const past = dateStr < todayStr;
-          const selected = dateStr === selectedDate;
-          const isToday = dateStr === todayStr;
+      <div className="space-y-0">
+        {rows.map((row, ri) => (
+          <div key={ri} className={cn('grid grid-cols-7 py-[2px]', ri > 0 && 'border-t border-espresso/[0.04]')}>
+            {row.map((day, ci) => {
+              const i = ri * 7 + ci;
+              if (!day) return <div key={i} />;
+              const dateStr = toDateStr(day);
+              const past = dateStr < todayStr;
+              const selected = dateStr === selectedDate;
+              const isToday = dateStr === todayStr;
 
-          return (
-            <button
-              key={i}
-              type="button"
-              disabled={past}
-              onClick={() => !past && onSelect(dateStr)}
-              className={cn(
-                'mx-auto flex h-9 w-9 items-center justify-center rounded-lg text-base transition sm:h-10 sm:w-10 sm:text-lg',
-                past && 'cursor-default text-inksoft/25',
-                !past && !selected && 'text-espresso hover:bg-[#f5ede2] hover:text-gold',
-                selected && 'bg-gold font-medium text-white',
-                isToday && !selected && 'border border-gold/50',
-              )}
-            >
-              {day}
-            </button>
-          );
-        })}
+              return (
+                <button
+                  key={i}
+                  type="button"
+                  disabled={past}
+                  onClick={() => !past && onSelect(dateStr)}
+                  className={cn(
+                    'mx-auto flex h-11 w-11 items-center justify-center rounded-lg text-[1.25rem] font-bold transition sm:h-12 sm:w-12 sm:text-[1.5rem]',
+                    past && 'cursor-default text-inksoft/25',
+                    !past && !selected && 'text-espresso hover:bg-[#e8dcd0] hover:text-gold',
+                    selected && 'bg-gold font-medium text-white',
+                    isToday && !selected && 'border border-gold/50',
+                  )}
+                >
+                  {day}
+                </button>
+              );
+            })}
+          </div>
+        ))}
       </div>
     </div>
   );

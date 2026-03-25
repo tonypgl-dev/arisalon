@@ -32,7 +32,7 @@ img {
 }
 
 .body-copy {
-  @apply text-[20px] leading-8 text-inksoft sm:text-[1.3rem];
+  @apply text-[20px] leading-8 text-inksoft sm:text-[1.7rem] sm:leading-9;
 }
 
 .card-soft {

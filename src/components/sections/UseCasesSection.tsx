@@ -87,10 +87,10 @@ export function UseCasesSection() {
                 <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#f4ede4] text-bronze sm:h-14 sm:w-14">
                   <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
                 </div>
-                <h3 className="mt-4 font-didot text-[1.12rem] leading-tight tracking-[0.03em] text-gold sm:mt-5 sm:text-[1.45rem] sm:tracking-[0.04em]">
+                <h3 className="mt-4 font-didot text-[1.12rem] leading-tight tracking-[0.03em] text-gold sm:mt-5 sm:text-[1.9rem] sm:tracking-[0.04em]">
                   {item.title}
                 </h3>
-                <p className="mt-1 text-[0.75rem] leading-4 text-inksoft sm:mt-3 sm:text-[1.12rem] sm:leading-8">
+                <p className="mt-1 text-[0.75rem] leading-4 text-inksoft sm:mt-3 sm:text-[1.45rem] sm:leading-9">
                   {item.description}
                 </p>
                 <AnimatePresence>
@@ -100,7 +100,7 @@ export function UseCasesSection() {
                       animate={{ opacity: 1, height: 'auto', marginTop: 12 }}
                       exit={{ opacity: 0, height: 0, marginTop: 0 }}
                       transition={{ duration: 0.3 }}
-                      className="overflow-hidden text-[0.75rem] leading-4 text-espresso/70 sm:text-[1.08rem] sm:leading-8"
+                      className="overflow-hidden text-[0.75rem] leading-4 text-espresso/70 sm:text-[1.4rem] sm:leading-9"
                     >
                       {item.details}
                     </motion.p>
@@ -121,7 +121,7 @@ export function UseCasesSection() {
           <h2 className="font-didot text-[1.9rem] tracking-[0.04em] text-gold sm:text-[2.5rem]">
             {siteContent.storyTitle}
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-[1.08rem] leading-8 text-inksoft sm:text-[1.18rem]">
+          <p className="mx-auto mt-4 max-w-xl text-[1.08rem] leading-8 text-inksoft sm:text-[1.55rem] sm:leading-9">
             {siteContent.storyText}
           </p>
           <motion.button

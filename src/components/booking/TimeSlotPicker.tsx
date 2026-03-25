@@ -33,12 +33,12 @@ export function TimeSlotPicker({ selected, onSelect }: Props) {
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
-        <p className="text-xs uppercase tracking-[0.24em] text-gold">Intervale disponibile</p>
+        <p className="text-base uppercase tracking-[0.24em] text-gold sm:text-lg">Intervale disponibile</p>
         <button
           type="button"
           onClick={toggleAll}
           className={cn(
-            'rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.18em] border transition',
+            'rounded-full px-4 py-1.5 text-[15px] uppercase tracking-[0.18em] border transition',
             allSelected
               ? 'border-gold bg-gold text-white'
               : 'border-line text-bronze hover:border-bronze'
@@ -62,10 +62,10 @@ export function TimeSlotPicker({ selected, onSelect }: Props) {
                   : 'border-line bg-white/80 hover:bg-white'
               )}
             >
-              <span className={cn('block text-[10px] uppercase tracking-[0.18em]', active ? 'text-gold' : 'text-bronze/60')}>
+              <span className={cn('block text-[15px] uppercase tracking-[0.18em]', active ? 'text-gold' : 'text-bronze/60')}>
                 {active ? 'Selectat' : 'Disponibil'}
               </span>
-              <span className="mt-1 block text-xl font-medium text-espresso">
+              <span className="mt-1 block text-base font-medium text-espresso sm:text-3xl">
                 {start} — {end}
               </span>
             </button>

@@ -12,9 +12,10 @@ export function Footer() {
   return (
     <footer className="relative flex h-screen flex-col overflow-hidden border-t border-line/60">
       {/* Centered logo */}
-      <div className="flex flex-1 items-center justify-center px-6">
+      <div className="flex flex-1 items-start justify-center px-6 pt-8 sm:items-center sm:pt-0">
         <motion.div
           ref={ref}
+          id="footer-logo-anchor"
           className="rounded-[24px]"
           animate={{
             opacity: isInView ? 1 : 0,

@@ -73,10 +73,10 @@ export function StorySection() {
                 transition={{ duration: 0.3 }}
                 className="rounded-xl bg-[#f5efe7] p-5 sm:p-6"
               >
-                <p className="font-didot text-[1.15rem] italic leading-relaxed text-espresso">
+                <p className="font-didot text-[1.5rem] italic leading-relaxed text-espresso">
                   „{items[index].text}"
                 </p>
-                <footer className="mt-3 text-[11px] uppercase tracking-[0.22em] text-bronze">
+                <footer className="mt-3 text-[14px] uppercase tracking-[0.22em] text-bronze">
                   — {items[index].author}
                 </footer>
               </motion.blockquote>
