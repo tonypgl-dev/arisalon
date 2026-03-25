@@ -1,6 +1,6 @@
 ﻿'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import { galleryImages } from '@/data/gallery';
@@ -8,9 +8,20 @@ import { SectionTitle } from '@/components/ui/SectionTitle';
 
 export function GallerySection() {
   const [lightbox, setLightbox] = useState<number | null>(null);
+  const touchStartX = useRef(0);
 
   function prev() { setLightbox((i) => (i !== null && i > 0 ? i - 1 : i)); }
   function next() { setLightbox((i) => (i !== null && i < galleryImages.length - 1 ? i + 1 : i)); }
+
+  function onTouchStart(e: React.TouchEvent) {
+    touchStartX.current = e.touches[0].clientX;
+  }
+  function onTouchEnd(e: React.TouchEvent) {
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) < 40) return;
+    if (diff > 0) next();
+    else prev();
+  }
 
   return (
     <section id="galerie" className="py-8 sm:py-10 lg:py-12">
@@ -74,6 +85,8 @@ export function GallerySection() {
               transition={{ duration: 0.25 }}
               className="relative mx-4 flex max-h-[90vh] max-w-5xl flex-col items-center"
               onClick={(e) => e.stopPropagation()}
+              onTouchStart={onTouchStart}
+              onTouchEnd={onTouchEnd}
             >
               <Image
                 src={galleryImages[lightbox].src}
@@ -86,7 +99,7 @@ export function GallerySection() {
               <button
                 type="button"
                 onClick={() => setLightbox(null)}
-                className="absolute -top-10 right-0 text-white/60 transition hover:text-white"
+                className="absolute -top-10 right-0 text-white transition hover:text-gold"
                 aria-label="Închide"
               >
                 <span className="text-2xl leading-none">✕</span>
@@ -96,7 +109,7 @@ export function GallerySection() {
                 <button
                   type="button"
                   onClick={prev}
-                  className="absolute left-0 top-1/2 -translate-x-10 -translate-y-1/2 text-white/60 transition hover:text-white"
+                  className="absolute left-0 top-1/2 -translate-x-10 -translate-y-1/2 text-white transition hover:text-gold"
                   aria-label="Anterior"
                 >
                   <span className="text-4xl leading-none">‹</span>
@@ -106,7 +119,7 @@ export function GallerySection() {
                 <button
                   type="button"
                   onClick={next}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-10 text-white/60 transition hover:text-white"
+                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-10 text-white transition hover:text-gold"
                   aria-label="Următor"
                 >
                   <span className="text-4xl leading-none">›</span>

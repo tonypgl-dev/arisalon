@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { siteContent } from '@/data/site-content';
 
@@ -9,10 +9,25 @@ export function StorySection() {
   const [index, setIndex] = useState(0);
   const [dir, setDir] = useState(1);
   const items = siteContent.testimonials;
+  const touchStartX = useRef(0);
 
   function go(next: number) {
     setDir(next > index ? 1 : -1);
     setIndex(next);
+  }
+
+  function onTouchStart(e: React.TouchEvent) {
+    touchStartX.current = e.touches[0].clientX;
+  }
+
+  function onTouchEnd(e: React.TouchEvent) {
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) < 40) return;
+    if (diff > 0) {
+      go((index + 1) % items.length);
+    } else {
+      go((index - 1 + items.length) % items.length);
+    }
   }
 
   return (
@@ -48,7 +63,7 @@ export function StorySection() {
             </div>
           </div>
 
-          <div className="mt-6 overflow-hidden">
+          <div className="mt-6 overflow-hidden" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
             <AnimatePresence mode="wait" initial={false}>
               <motion.blockquote
                 key={index}

@@ -52,7 +52,7 @@ export function AvailabilityCalendar({
   }
 
   return (
-    <div className="space-y-3">
+    <div className="mx-auto max-w-sm space-y-2">
       <div className="flex items-center justify-between pb-1">
         <button
           type="button"
@@ -62,7 +62,7 @@ export function AvailabilityCalendar({
         >
           ‹
         </button>
-        <p className="font-didot text-base tracking-[0.06em] text-espresso">
+        <p className="font-didot text-lg tracking-[0.06em] text-espresso">
           {MONTHS_RO[viewMonth]} {viewYear}
         </p>
         <button
@@ -97,7 +97,7 @@ export function AvailabilityCalendar({
               disabled={past}
               onClick={() => !past && onSelect(dateStr)}
               className={cn(
-                'mx-auto flex h-12 w-12 items-center justify-center rounded-lg text-xl transition',
+                'mx-auto flex h-9 w-9 items-center justify-center rounded-lg text-base transition sm:h-10 sm:w-10 sm:text-lg',
                 past && 'cursor-default text-inksoft/25',
                 !past && !selected && 'text-espresso hover:bg-[#f5ede2] hover:text-gold',
                 selected && 'bg-gold font-medium text-white',

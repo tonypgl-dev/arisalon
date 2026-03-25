@@ -92,9 +92,9 @@ export function ReservationForm({ date, selectedSlots, minBookingHours }: Props)
   }
 
   return (
-    <form className="space-y-4" onSubmit={handleSubmit}>
+    <form className="space-y-2 sm:space-y-4" onSubmit={handleSubmit}>
       <BookingSummary date={date} startTime={startTime} endTime={endTime} />
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-2 sm:gap-4 md:grid-cols-2">
         <Input
           placeholder="Nume și prenume"
           value={form.fullName}
@@ -112,7 +112,7 @@ export function ReservationForm({ date, selectedSlots, minBookingHours }: Props)
         value={form.email}
         onChange={(event) => setForm((current) => ({ ...current, email: event.target.value }))}
       />
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-2 sm:gap-4 md:grid-cols-2">
         <Select value={form.eventType} onChange={(event) => setForm((current) => ({ ...current, eventType: event.target.value }))}>
           <option>Ședință foto</option>
           <option>Filmare / Podcast</option>
