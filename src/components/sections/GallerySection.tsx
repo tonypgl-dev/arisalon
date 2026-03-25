@@ -1,27 +1,100 @@
-﻿'use client';
+'use client';
 
-import { useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import { galleryImages } from '@/data/gallery';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 
+function playSwipeSound() {
+  try {
+    const ctx = new AudioContext();
+    const dur = 0.08;
+    const buf = ctx.createBuffer(1, Math.floor(ctx.sampleRate * dur), ctx.sampleRate);
+    const ch = buf.getChannelData(0);
+    for (let i = 0; i < ch.length; i++) {
+      const t = i / ch.length;
+      ch[i] = (Math.random() * 2 - 1) * Math.exp(-12 * t) * 0.3;
+    }
+    const src = ctx.createBufferSource();
+    src.buffer = buf;
+    const bp = ctx.createBiquadFilter();
+    bp.type = 'bandpass';
+    bp.frequency.value = 3200;
+    bp.Q.value = 1;
+    src.connect(bp);
+    bp.connect(ctx.destination);
+    src.start();
+    src.stop(ctx.currentTime + dur);
+  } catch { /* ignore */ }
+}
+
 export function GallerySection() {
   const [lightbox, setLightbox] = useState<number | null>(null);
+  const [showHint, setShowHint] = useState(false);
+  const [dir, setDir] = useState(0); // -1 = prev (down), 1 = next (up)
+  const touchStartY = useRef(0);
   const touchStartX = useRef(0);
 
-  function prev() { setLightbox((i) => (i !== null && i > 0 ? i - 1 : i)); }
-  function next() { setLightbox((i) => (i !== null && i < galleryImages.length - 1 ? i + 1 : i)); }
+  function go(next: number, direction: number) {
+    if (next < 0 || next >= galleryImages.length) return;
+    setDir(direction);
+    playSwipeSound();
+    setLightbox(next);
+  }
+
+  function prev() { if (lightbox !== null && lightbox > 0) go(lightbox - 1, -1); }
+  function next() { if (lightbox !== null && lightbox < galleryImages.length - 1) go(lightbox + 1, 1); }
 
   function onTouchStart(e: React.TouchEvent) {
+    touchStartY.current = e.touches[0].clientY;
     touchStartX.current = e.touches[0].clientX;
   }
+
   function onTouchEnd(e: React.TouchEvent) {
-    const diff = touchStartX.current - e.changedTouches[0].clientX;
-    if (Math.abs(diff) < 40) return;
-    if (diff > 0) next();
-    else prev();
+    const diffY = touchStartY.current - e.changedTouches[0].clientY;
+    const diffX = touchStartX.current - e.changedTouches[0].clientX;
+    // Prioritize vertical swipe
+    if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > 50) {
+      if (diffY > 0) next(); // swipe up = next
+      else prev(); // swipe down = prev
+    } else if (Math.abs(diffX) > 50) {
+      if (diffX > 0) next(); // swipe left = next
+      else prev();
+    }
   }
+
+  // Show hint animation when lightbox opens
+  useEffect(() => {
+    if (lightbox !== null) {
+      setShowHint(true);
+      const t = setTimeout(() => setShowHint(false), 2800);
+      return () => clearTimeout(t);
+    }
+    setShowHint(false);
+  }, [lightbox]);
+
+  // Keyboard navigation
+  const handleKey = useCallback((e: KeyboardEvent) => {
+    if (lightbox === null) return;
+    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') prev();
+    else if (e.key === 'ArrowDown' || e.key === 'ArrowRight') next();
+    else if (e.key === 'Escape') setLightbox(null);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lightbox]);
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [handleKey]);
+
+  // Lock body scroll when lightbox open
+  useEffect(() => {
+    if (lightbox !== null) {
+      document.body.style.overflow = 'hidden';
+      return () => { document.body.style.overflow = ''; };
+    }
+  }, [lightbox]);
 
   return (
     <section id="galerie" className="py-8 sm:py-10 lg:py-12">
@@ -50,7 +123,7 @@ export function GallerySection() {
               <div key={image.src} className={`mb-3 break-inside-avoid sm:mb-4 ${staggerOffset}`}>
                 <button
                   type="button"
-                  onClick={() => setLightbox(i)}
+                  onClick={() => { setDir(0); setLightbox(i); }}
                   className={`group relative w-full overflow-hidden rounded-xl shadow-elegant ${tileHeight}`}
                 >
                   <Image
@@ -68,68 +141,116 @@ export function GallerySection() {
         </div>
       </div>
 
+      {/* Fullscreen lightbox */}
       <AnimatePresence>
         {lightbox !== null && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#2a2725]/92 backdrop-blur-sm"
-            onClick={() => setLightbox(null)}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[100] bg-[#1a1816]"
+            onTouchStart={onTouchStart}
+            onTouchEnd={onTouchEnd}
           >
-            <motion.div
-              initial={{ scale: 0.96, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.96, opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              className="relative mx-4 flex max-h-[90vh] max-w-5xl flex-col items-center"
-              onClick={(e) => e.stopPropagation()}
-              onTouchStart={onTouchStart}
-              onTouchEnd={onTouchEnd}
-            >
-              <Image
-                src={galleryImages[lightbox].src}
-                alt={galleryImages[lightbox].alt}
-                width={1400}
-                height={950}
-                className="max-h-[80vh] w-auto rounded-xl object-contain shadow-float"
-              />
+            {/* Image */}
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={lightbox}
+                initial={{ opacity: 0, y: dir * 60 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: dir * -60 }}
+                transition={{ duration: 0.3 }}
+                className="flex h-full w-full items-center justify-center"
+              >
+                <Image
+                  src={galleryImages[lightbox].src}
+                  alt={galleryImages[lightbox].alt}
+                  fill
+                  sizes="100vw"
+                  className="object-contain"
+                  priority
+                />
+              </motion.div>
+            </AnimatePresence>
 
+            {/* Close button */}
+            <button
+              type="button"
+              onClick={() => setLightbox(null)}
+              className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/40 text-white transition hover:bg-black/60"
+              aria-label="Închide"
+            >
+              <span className="text-xl leading-none">✕</span>
+            </button>
+
+            {/* Counter */}
+            <div className="absolute bottom-4 left-1/2 z-10 -translate-x-1/2 rounded-full bg-black/40 px-4 py-1.5 text-[13px] tracking-[0.15em] text-white/70">
+              {lightbox + 1} / {galleryImages.length}
+            </div>
+
+            {/* Desktop arrows */}
+            {lightbox > 0 && (
               <button
                 type="button"
-                onClick={() => setLightbox(null)}
-                className="absolute -top-10 right-0 text-white transition hover:text-gold"
-                aria-label="Închide"
+                onClick={prev}
+                className="absolute left-4 top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center rounded-full bg-black/40 px-3 py-2 text-3xl text-white transition hover:bg-black/60 sm:flex"
+                aria-label="Anterior"
               >
-                <span className="text-2xl leading-none">✕</span>
+                ‹
               </button>
+            )}
+            {lightbox < galleryImages.length - 1 && (
+              <button
+                type="button"
+                onClick={next}
+                className="absolute right-4 top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center rounded-full bg-black/40 px-3 py-2 text-3xl text-white transition hover:bg-black/60 sm:flex"
+                aria-label="Următor"
+              >
+                ›
+              </button>
+            )}
 
-              {lightbox > 0 && (
-                <button
-                  type="button"
-                  onClick={prev}
-                  className="absolute left-0 top-1/2 -translate-x-10 -translate-y-1/2 text-white transition hover:text-gold"
-                  aria-label="Anterior"
+            {/* Swipe hint overlay */}
+            <AnimatePresence>
+              {showHint && lightbox < galleryImages.length - 1 && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="pointer-events-none absolute inset-0 z-20 flex flex-col items-center justify-end pb-20 sm:hidden"
                 >
-                  <span className="text-4xl leading-none">‹</span>
-                </button>
+                  <motion.div
+                    className="flex flex-col items-center gap-2"
+                    animate={{ y: [0, -16, 0, -16, 0] }}
+                    transition={{ duration: 2, ease: 'easeInOut' }}
+                    onAnimationStart={() => {
+                      setTimeout(() => playSwipeSound(), 200);
+                      setTimeout(() => playSwipeSound(), 1000);
+                    }}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="28"
+                      height="28"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="text-white/80"
+                    >
+                      <polyline points="18 15 12 9 6 15" />
+                    </svg>
+                    <span className="text-[13px] uppercase tracking-[0.2em] text-white/80">
+                      Swipe în sus
+                    </span>
+                  </motion.div>
+                </motion.div>
               )}
-              {lightbox < galleryImages.length - 1 && (
-                <button
-                  type="button"
-                  onClick={next}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-10 text-white transition hover:text-gold"
-                  aria-label="Următor"
-                >
-                  <span className="text-4xl leading-none">›</span>
-                </button>
-              )}
-
-              <p className="mt-4 text-[11px] uppercase tracking-[0.22em] text-white/40">
-                {lightbox + 1} / {galleryImages.length}
-              </p>
-            </motion.div>
+            </AnimatePresence>
           </motion.div>
         )}
       </AnimatePresence>
