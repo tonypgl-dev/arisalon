@@ -219,34 +219,34 @@ export function GallerySection() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="pointer-events-none absolute inset-0 z-20 flex flex-col items-center justify-end pb-20 sm:hidden"
+                  className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center sm:hidden"
                 >
                   <motion.div
-                    className="flex flex-col items-center gap-2"
-                    animate={{ y: [0, -16, 0, -16, 0] }}
-                    transition={{ duration: 2, ease: 'easeInOut' }}
+                    className="flex flex-col items-center gap-1 rounded-2xl bg-black/50 px-6 py-4 backdrop-blur-sm"
+                    animate={{
+                      boxShadow: [
+                        '0 0 0 rgba(201,168,76,0)',
+                        '0 0 30px rgba(201,168,76,0.4)',
+                        '0 0 0 rgba(201,168,76,0)',
+                        '0 0 30px rgba(201,168,76,0.4)',
+                        '0 0 0 rgba(201,168,76,0)',
+                      ],
+                    }}
+                    transition={{ duration: 2.4, ease: 'easeInOut' }}
                     onAnimationStart={() => {
-                      setTimeout(() => playSwipeSound(), 200);
-                      setTimeout(() => playSwipeSound(), 1000);
+                      setTimeout(() => playSwipeSound(), 300);
+                      setTimeout(() => playSwipeSound(), 1200);
                     }}
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="28"
-                      height="28"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-white/80"
-                    >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-white">
                       <polyline points="18 15 12 9 6 15" />
                     </svg>
-                    <span className="text-[13px] uppercase tracking-[0.2em] text-white/80">
-                      Swipe în sus
+                    <span className="text-[15px] font-bold uppercase tracking-[0.25em] text-white">
+                      Swipe
                     </span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-white">
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
                   </motion.div>
                 </motion.div>
               )}
