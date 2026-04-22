@@ -7,7 +7,7 @@ const COOKIE_NAME = 'salon_pin_auth'
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  if (pathname.startsWith('/pin') || pathname.startsWith('/_next') || pathname.startsWith('/favicon')) {
+  if (pathname.startsWith('/pin') || pathname.startsWith('/api/pin') || pathname.startsWith('/_next') || pathname.startsWith('/favicon')) {
     return NextResponse.next()
   }
 
